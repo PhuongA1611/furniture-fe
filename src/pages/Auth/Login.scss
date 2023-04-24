@@ -1,0 +1,254 @@
+@use "../../SCSS/" as *;
+
+.login {
+    &__container {
+        width: 50%;
+        border: 2px solid #eaeaea;
+        padding: 30px 0;
+        margin-left: auto;
+        margin-right: auto;
+
+        h2 {
+            // margin-top: 40px;
+            position: relative;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: center;
+            font-size: 28px;
+            line-height: 42px;
+            font-family: $font-semiBold;
+            border-bottom: 2px solid #e1e1e1;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+
+            img {
+                width: 35px;
+                height: 35px;
+            }
+
+            &::after {
+                content: '';
+                width: 210px;
+                height: 2px;
+                background-color: $main-color;
+                position: absolute;
+                bottom: -2px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    &__content {
+        padding: 0 90px;
+    }
+
+    &__form {
+        &__group {
+            label {
+                font-size: 14px;
+                line-height: 20px;
+                font-family: $font-medium;
+                color: $text-blur-color;
+                margin-bottom: 10px;
+
+                span {
+                    color: red;
+                }
+            }
+
+            input {
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                padding: 0 20px;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                font-size: 16px;
+            }
+            .error{
+                display: block;
+                color: $main-color;
+                margin-bottom: 10px;
+                margin-top: -10px;
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+
+        &__option {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+
+            .remember {
+                margin-right: 10px;
+                position: relative;
+
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    height: 22px;
+                    cursor: pointer;
+                    width: 100%;
+
+                    &:checked+label {
+                        &::before {
+                            border: 1px solid $main-color;
+                        }
+
+                        &::after {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                label {
+                    color: $text-color;
+                    font-family: $font-medium;
+                    font-size: 14px;
+                    line-height: 20px;
+
+                    // position: relative;
+                    &::before {
+                        content: '';
+                        width: 16px;
+                        height: 16px;
+                        display: inline-block;
+                        border-radius: 50%;
+                        border: 1px solid #000;
+                        margin-right: 5px;
+                        position: relative;
+                        top: 3px;
+                        z-index: 2;
+                    }
+
+                    &::after {
+                        width: 16px;
+                        height: 16px;
+                        content: "";
+                        display: inline-block;
+                        position: absolute;
+                        top: 4px;
+                        border-radius: 50%;
+                        border: 2.5px solid #fff;
+                        left: 0;
+                        background: $main-color;
+                        z-index: 1;
+                        opacity: 0;
+                    }
+                }
+            }
+
+            .lost-password {
+                a {
+                    font-family: $font-medium;
+                    color: $text-color;
+                    display: inline-block;
+                    position: relative;
+                    font-size: 14px;
+                    line-height: 20px;
+                    &::before {
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        transition: all .3s ease;
+                        background: #000;
+                    }
+                    &:hover{
+                        color: $main-color;
+                        text-decoration: unset;
+                        outline: unset;
+                        &::before{
+                            width: 50%;
+                            background: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+        &__submit{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            input[type=submit]{
+                background-color: #000;
+                border: 0;
+                font-size: 16px;
+                line-height: 24px;
+                color: #fff;
+                font-family: $font-semiBold;
+                text-transform: uppercase;
+                cursor: pointer;
+                max-width: 220px;
+                width: 100%;
+                height: 50px;
+                &:hover{
+                    background-color: $main-color;
+                }
+            }
+        }
+    }
+    &__link{
+        @include flex(center,center);
+        margin-top: 10px;
+        a{
+            color: $text-blur-color;
+            font-size: 14px;
+            line-height: 20px;
+            &:hover{
+                color: $main-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .login{
+        &__container{
+            width: 65%;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .login{
+        &__container{
+            width: 80%;
+            padding-top: 20px;
+            h2{
+                font-size: 20px;
+                line-height: 30px;
+                gap: 0;
+                padding-bottom: 10px;
+                img{
+                    width: 30px;
+                    height: 30px;
+                }
+                &::after{
+                    width: 120px;
+                }
+            }
+        }
+        &__content{
+            padding: 0 60px;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .login{
+        &__container{
+            width: 100%;
+        }
+        &__content{
+            padding: 0 20px;
+        }
+    }
+}

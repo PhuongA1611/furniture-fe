@@ -1,0 +1,267 @@
+@use "../../SCSS/" as *;
+
+.cart {
+    &__none {
+    }
+
+    &__table {
+        margin-bottom: 40px;
+
+        table {
+            min-width: 680px;
+            border: 1px solid #ddd;
+
+            thead {
+                background: #f5f5f5;
+                border: 2px solid #f5f5f5;
+
+                th {
+                    min-width: 50px;
+                    padding: 10px;
+                    border: 0;
+                    border-bottom: 1px solid #ddd;
+                    line-height: 1.6;
+                    color: #000;
+                    font-family: $font-semiBold;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    text-align: center;
+
+                    &:nth-child(3) {
+                        text-align: left;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    border-color: #ddd;
+
+                    td {
+                        padding: 10px;
+                        vertical-align: middle;
+                        text-align: center;
+
+                        &:nth-child(2),
+                        &:nth-child(3) {
+                            text-align: left;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__close {
+        }
+
+        &__img {
+            width: 100px;
+            aspect-ratio: 1;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        &__title {
+            font-size: 16px;
+            line-height: 24px;
+            color: #000;
+            font-family: $font-text;
+
+            &:hover {
+                color: $main-color;
+            }
+        }
+
+        &__price {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+
+            del {
+                margin-right: 5px;
+                color: #a3a3a3;
+            }
+
+            ins {
+                text-decoration: none;
+                color: $main-color;
+            }
+        }
+
+        &__option {
+            border: 1px solid #a3a3a3;
+            padding: 2px 5px;
+            font-size: 11px;
+            line-height: 16px;
+            margin-right: 5px;
+            color: #a3a3a3;
+        }
+
+        &__quantity {
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            border: 1px solid #ddd;
+            @include flex(center, center);
+
+            .quantity {
+                @include flex(center, center);
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+                line-height: 20px;
+            }
+
+            .btn-quantity {
+                width: 35px;
+                height: 35px;
+                background-color: transparent;
+                color: #a3a3a3;
+            }
+
+            .btn-minus {
+                border-right: 1px solid #ddd;
+            }
+
+            .btn-add {
+                border-left: 1px solid #ddd;
+            }
+        }
+
+        &__subtotal {
+            font-size: 16px;
+            line-height: 24px;
+            font-family: $font-bold;
+            color: $main-color;
+        }
+    }
+
+    &__totals {
+        h2 {
+            font-size: 14px;
+            color: #000;
+            text-transform: uppercase;
+            padding: 15px;
+            text-align: center;
+            background: #f5f5f5;
+            margin: 0;
+            line-height: 1.8;
+            border: 2px solid #f5f5f5;
+            border-bottom: 0;
+            font-weight: 600;
+        }
+
+        a {
+            background: $main-color;
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            font-weight: 600;
+
+            &:hover {
+                background-color: $main-color-hover;
+                color: #fff;
+            }
+        }
+
+        table {
+            margin-bottom: 30px;
+
+            tbody {
+                border: 1px solid hsla(0, 0%, 90%, .25);
+                border-top: 0;
+
+                tr {
+
+                    th,
+                    td {
+                        padding: 15px;
+                        border: 0;
+                        border-bottom: 1px solid hsla(0, 0%, 90%, .5);
+                    }
+
+                    th {
+                        font-family: $font-semiBold;
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+
+                    td {
+                        p {
+                            font-family: $font-medium;
+                            color: #a3a3a3;
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__sub {
+            font-family: $font-medium;
+            color: #a3a3a3;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        &__final {
+            color: $main-color;
+            font-size: 16px;
+            line-height: 24px;
+            font-family: $font-semiBold;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .cart{
+        &__table{
+            table{
+                thead{
+                    th{
+                        font-size: 12px;
+                    }
+                }
+            }
+            &__img{
+                width: 70px;
+            }
+            &__title{
+                font-size: 14px;
+                line-height: 20px
+            }
+            &__price{
+                @include flex(center,center);
+                flex-direction: column;
+                font-size: 12px;
+                line-height: 18px;
+            }
+            &__option{
+                font-size: 10px;
+            }
+            &__quantity{
+                .quantity{
+                    width: 25px;
+                    height: 25px;
+                }
+                .btn-quantity{
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+            &__subtotal{
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+    }
+}

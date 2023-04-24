@@ -1,0 +1,135 @@
+@use "../../SCSS/" as *;
+
+.product-card {
+    &__wrap {
+        overflow: hidden;
+    }
+
+    &__thumb {
+        aspect-ratio: 1;
+        position: relative;
+        background-color: #f6f6f6;
+
+        a {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all .3s ease;
+            }
+        }
+
+        &__btn {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            z-index: 9;
+            transition: all .3s ease-in-out;
+            width: 35px;
+
+            button {
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(100%);
+                transition: all .3s ease;
+                background: #fff;
+                text-align: center;
+                position: relative;
+                white-space: nowrap;
+                margin-top: 0;
+                color: #2c2c2c;
+                width: 35px;
+                height: 35px;
+                border: 1px solid #000;
+                display: inline-block;
+                cursor: pointer;
+                margin-bottom: 5px;
+                font-family: $font-text;
+
+                &:nth-child(2) {
+                    transition-delay: .1s;
+                }
+
+                &:hover {
+                    background: $main-color;
+                    border-color: $main-color;
+                    color: #fff;
+                }
+            }
+        }
+
+        &:hover {
+            .product-card__thumb__btn {
+                button {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateX(0);
+                }
+            }
+
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 18px;
+
+        h3 {
+            font-size: 18px;
+            line-height: 1.2;
+            margin-bottom: 8px;
+
+            a {
+                font-size: 18px;
+                text-transform: capitalize;
+                font-family: $font-medium;
+                line-height: 1.2;
+                color: $text-color;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+        }
+
+        &__price {
+            color: $main-color;
+            font-size: 16px;
+            line-height: 20px;
+            margin-bottom: 15px;
+            font-family: $font-medium;
+            padding-bottom: 20px;
+            vertical-align: middle;
+
+            del {
+                font-size: 14px;
+                color: #a3a3a3;
+                margin-right: 5px;
+            }
+
+            ins {
+                color: #ff4545;
+                text-decoration: none;
+            }
+        }
+    }
+}
+@media screen and (max-width: 991px) {
+    .product-card {
+        &__thumb {
+            &__btn {
+                button{
+                    opacity: 1;
+                    visibility: visible;
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,120 @@
+@use "../../SCSS/" as *;
+
+.breadcrumb {
+    justify-content: center;
+
+    &__item {
+        padding: 5px;
+
+        a {
+            color: hsla(0, 0%, 100%, .8);
+            font-size: 16px;
+            line-height: 24px;
+            text-transform: capitalize;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+
+        span {
+            color: #fff;
+            font-size: 16px;
+            line-height: 24px;
+            text-transform: capitalize;
+        }
+
+        &::before {
+            content: "\f105";
+            display: inline-block;
+            font-family: FontAwesome;
+            font-size: 12px;
+            padding-right: 10px;
+            color: hsla(0, 0%, 100%, .8);
+        }
+
+        &:first-child {
+            &::before {
+                content: none;
+            }
+        }
+    }
+}
+
+.breadcrumb-main {
+    // margin: 0 0 50px;
+    font-size: 20px;
+    padding-top: 55px;
+    padding-bottom: 50px;
+    background-attachment: fixed;
+    background-position: top;
+
+    h1 {
+        text-transform: capitalize;
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 50px;
+        color: #fff;
+        font-family: $font-medium;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    .breadcrumb {
+        margin-bottom: 0;
+    }
+}
+
+.breadcrumb-detail {
+    padding: 20px 0;
+    h1 {
+        display: none;
+    }
+
+    .breadcrumb {
+        justify-content: start;
+        margin-bottom: 0;
+
+        &__item {
+            a {
+                color: #a3a3a3;
+                font-size: 14px;
+                line-height: 20px;
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+            span{
+                color: $main-color;
+                font-size: 14px;
+                line-height: 20px;
+            }
+            &::before{
+                color: #a3a3a3;
+                font-size: 11px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .breadcrumb-main{
+        h1{
+            font-size: 40px;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .breadcrumb{
+        a, span{
+            font-size: 14px;
+            line-height: 20px;
+        }
+    }
+    .breadcrumb-main{
+        h1{
+            font-size: 32px;
+        }
+    }
+}

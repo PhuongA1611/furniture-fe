@@ -1,0 +1,29 @@
+@use "../../../SCSS/" as *;
+
+.admin-products{
+    &__wrapper{
+        @include flex(space-between, center);
+    }
+    &__search{
+        @include flex(end, center);
+        position: relative;
+        &__input{
+            input{
+                height:40px;
+                border: none;
+                width: 360px;
+                border-radius: 4px;
+            }
+        }
+        &__btn{
+            position: absolute;
+            right: 5px;
+            button{
+                padding: 4px 12px;
+            }
+        }
+    }
+    img{
+        max-width: 150px;
+    }
+}

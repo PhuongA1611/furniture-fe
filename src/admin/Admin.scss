@@ -1,0 +1,45 @@
+@use "../SCSS/" as *;
+
+.ant-layout-sider {
+    width: 256px !important;
+    max-width: none !important;
+    flex-basis: auto !important;
+}
+
+.admin-heading {
+    font-family: $font-medium;
+    font-size: 30px;
+    line-height: 52px;
+    color: #001529;
+    margin-bottom: 20px;
+}
+
+.admin-login {
+    @include flex(center, center);
+    height: calc(100vh);
+    background-color: #001529;
+    padding-bottom: 100px;
+    h2{
+        font-size: 36px;
+        line-height: 1.2;
+        margin-bottom: 30px;
+        color: #fff;
+        font-family: $font-semiBold;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+.login-form {
+    width: 350px;
+}
+
+#normal_login .login-form-button {
+    width: 100%;
+}
+
+table {
+    img {
+        max-width: 150px;
+    }
+}

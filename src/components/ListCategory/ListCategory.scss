@@ -1,0 +1,160 @@
+@use "../../SCSS/" as *;
+
+.selection {
+    margin-bottom: 70px;
+
+    &__title {
+        h2 {
+            font-size: 32px;
+            font-family: $font-medium;
+            line-height: 1;
+            padding-bottom: 30px;
+            position: relative;
+            margin-bottom: 30px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                width: 60px;
+                height: 2px;
+                left: 0;
+                background: $main-color;
+            }
+        }
+
+        &__note {
+            @include flex(start, center);
+            margin-bottom: 30px;
+
+            p {
+                margin-bottom: 0;
+                margin-left: 20px;
+                font-size: 16px;
+                line-height: 24px;
+                color: #a3a3a3;
+            }
+        }
+
+        a {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            line-height: 30px;
+            fill: #000;
+            color: #000;
+            background-color: rgba(2, 1, 1, 0);
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+
+            span {
+                margin-right: 9px;
+            }
+
+            &:hover {
+                color: $main-color;
+                border-color: $main-color;
+            }
+        }
+    }
+
+    &__slider {
+        position: relative;
+
+        &__item {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 3px;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all .5s ease;
+            }
+
+            h2 {
+                position: absolute;
+                z-index: 2;
+                left: 35px;
+                bottom: 15px;
+                font-size: 18px;
+                line-height: 26px;
+                color: #000;
+                max-width: 100%;
+            }
+
+            &:hover {
+                img {
+                    transform: scale(1.1);
+                }
+
+                h2 {
+                    color: $main-color;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .selection {
+        margin-bottom: 50px;
+
+        &__title {
+            margin-bottom: 20px;
+
+            h2 {
+                font-size: 26px;
+                padding-bottom: 15px;
+                margin-bottom: 20px;
+
+                br {
+                    display: none;
+                }
+
+                &::after {
+                    width: 200px;
+                }
+            }
+
+            &__note {
+                margin-bottom: 15px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .selection {
+        &__title {
+            h2 {
+                font-size: 22px;
+                line-height: 30px;
+                padding-bottom: 8px;
+
+                &::after {
+                    height: 1px;
+                    width: 160px;
+                }
+            }
+        }
+
+        &__slider {
+
+            &__item {
+                h2 {
+                    left: 20px;
+                    bottom: 10px;
+                }
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}

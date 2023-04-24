@@ -1,0 +1,465 @@
+@use "../../SCSS/" as *;
+
+.detail {
+    &__main {
+        margin-bottom: 70px;
+    }
+
+    &__wrapper {
+        margin-right: 20px;
+    }
+
+    &__image {
+        margin-top: 15px;
+
+        &__item {
+            aspect-ratio: 1;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &__content {
+        margin-top: 20px;
+
+        h2 {
+            margin-bottom: 13px;
+            font-size: 26px;
+            line-height: 36px;
+            text-transform: capitalize;
+            font-family: $font-medium;
+            color: $text-color;
+        }
+
+        &__price {
+            color: $main-color;
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 15px;
+            font-family: $font-medium;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 20px;
+            vertical-align: middle;
+
+            del {
+                font-size: 16px;
+                color: #a3a3a3;
+                margin-right: 5px;
+            }
+
+            ins {
+                color: #ff4545;
+                text-decoration: none;
+            }
+        }
+
+        &__selection {
+            margin-bottom: 15px;
+
+            h3 {
+                margin-bottom: 10px;
+                font-size: 20px;
+                line-height: 28px;
+                text-transform: capitalize;
+                font-family: $font-medium;
+                color: $text-color;
+            }
+
+            .selection-wrapper {
+                // margin-top: 15px;
+                @include flex(start, center);
+                gap: 10px;
+
+                label {
+                    position: relative;
+                    padding: 6px 16px;
+                    background-color: transparent;
+                    color: #000;
+                    font-size: 14px;
+                    line-height: 20px;
+                    border: 1px solid #000;
+
+                    input[type='radio'] {
+                        position: absolute;
+                        opacity: 0;
+                        width: 100%;
+                        height: 100%;
+                        cursor: pointer;
+                    }
+
+                    &:hover {
+                        background-color: $main-color;
+                        border-color: $main-color;
+                        color: #fff;
+                    }
+
+                    &:has(input[type='radio']:checked) {
+                        background-color: $main-color;
+                        border-color: $main-color;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        &__quantity {
+            width: fit-content;
+            border: 1px solid #ccc;
+            @include flex(start, center);
+            margin-bottom: 30px;
+            margin-top: 30px;
+
+            input[type="number"] {
+                @include flex(center, center);
+                width: 45px;
+                height: 45px;
+                padding-left: 18px;
+
+                &::-webkit-outer-spin-button,
+                &::-webkit-inner-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0
+                }
+            }
+
+            button {
+                @include flex(center, center);
+                width: 45px;
+                height: 45px;
+                background-color: transparent;
+
+                &.minus {
+                    border-right: 1px solid #ccc;
+                }
+
+                &.plus {
+                    border-left: 1px solid #ccc;
+                }
+            }
+        }
+
+        &__btn {
+            @include flex(start, center);
+
+            button {
+                padding: 0px 25px;
+                font-size: 14px;
+                font-family: $font-semiBold;
+                text-transform: uppercase;
+                line-height: 50px;
+                text-align: center;
+                margin: 5px 10px 5px 0;
+                color: #fff;
+
+                &.add-cart {
+                    background-color: #000;
+
+                    &:hover {
+                        background-color: $main-color;
+                    }
+                }
+
+                &.buy-now {
+                    background-color: $main-color;
+
+                    &:hover {
+                        background-color: #cc5900;
+                    }
+                }
+            }
+        }
+
+        &__feature {
+            margin-top: 10px;
+            button {
+                background: transparent;
+                text-align: center;
+                position: relative;
+                white-space: nowrap;
+                margin-top: 0;
+                color: #000;
+                display: inline-block;
+                cursor: pointer;
+                margin: 5px 20px 5px 0;
+                border: 0;
+                padding: 0;
+                &::before{
+                    display: inline-block;
+                    font-size: 16px;
+                    color: #000;
+                    transition: all .1s ease;
+                    width: 50px;
+                    height: 50px;
+                    border: 1px solid #000;
+                    line-height: 48px;
+                    margin-right: 10px;
+                }
+
+                &.add-favorite {
+                    &::before {
+                        content: "\f08a";
+                        font-family: FontAwesome;
+                    }
+                }
+                &:hover{
+                    color: $main-color;
+                    &::before{
+                        border-color: $main-color;
+                        background-color: $main-color;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    &__desc {
+        margin-bottom: 70px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ebebeb;
+
+        &__tabs {
+            margin-top: 17px;
+            margin-bottom: 17px;
+            padding: 15px 0;
+            @include flex(center, center);
+            border-bottom: 1px solid #ebebeb;
+            border-top: 1px solid #ebebeb;
+
+            li {
+                padding: 0;
+                border: 0;
+                margin: 10px 22.5px;
+                box-shadow: unset;
+
+                .nav-link {
+                    position: relative;
+                    color: #a3a3a3;
+                    font-size: 16px;
+                    text-transform: uppercase;
+                    padding: 0 0 5px;
+                    border: 0;
+                    display: inline-block;
+                    position: relative;
+                    font-family: $font-semiBold;
+
+                    &::after {
+                        position: absolute;
+                        bottom: 0;
+                        content: "";
+                        left: 50%;
+                        transform: translateX(-50%);
+                        transition: all .3s ease;
+                        width: 0;
+                        height: 2px;
+                        background: $main-color;
+                    }
+
+                    &.active {
+                        color: #000;
+
+                        &::after {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__content {
+            margin-top: 30px;
+
+            table {
+                tbody {
+                    tr {
+                        border: none;
+
+                        th {
+                            width: 10%;
+                            border: none;
+                        }
+
+                        td {
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__related {
+        margin-bottom: 50px;
+
+        &__title {
+            @include flex(center, center);
+            margin-bottom: 50px;
+
+            h2 {
+                font-size: 18px;
+                color: #000;
+                text-transform: uppercase;
+                margin: 0;
+                display: inline-block;
+                position: relative;
+                padding-bottom: 15px;
+                font-weight: 600;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    width: 50%;
+                    height: 2px;
+                    background: #ff6f00;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 0;
+                }
+            }
+        }
+
+        &__content {
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                top: 40%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .detail{
+        &__wrapper {
+            margin-right: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .detail {
+        &__main {
+            margin-bottom: 50px;
+        }
+
+        &__content {
+            h2 {
+                margin-top: 20px;
+                margin-bottom: 5px;
+                font-size: 22px;
+                line-height: 26px;
+            }
+
+            &__price {
+                font-size: 16px;
+                line-height: 24px;
+                padding-bottom: 5px;
+            }
+
+            &__selection {
+                h3 {
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 5px;
+                }
+
+                .selection-wrapper {
+                    label {
+                        font-size: 12px;
+                        line-height: 18px;
+                        padding: 4px 12px;
+                    }
+                }
+            }
+
+            &__quantity {
+                margin-top: 20px;
+
+                input[type="number"] {
+                    width: 30px;
+                    height: 30px;
+                    padding-left: 12px;
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+
+                button {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+
+            &__btn {
+                button {
+                    padding: 0 15px;
+                    font-size: 12px;
+                    line-height: 40px;
+                }
+            }
+        }
+
+        &__desc {
+            margin-bottom: 50px;
+
+            &__content {
+                p {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+
+                table {
+                    tbody {
+                        tr {
+
+                            th,
+                            td {
+                                font-size: 14px;
+                                line-height: 20px;
+                                padding: 5px 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &__related {
+            &__title {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .detail {
+        &__desc {
+            margin-bottom: 50px;
+
+            &__content {
+                p {
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+
+                table {
+                    tbody {
+                        tr {
+
+                            th,
+                            td {
+                                font-size: 12px;
+                                line-height: 18px;
+                                padding: 3px 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

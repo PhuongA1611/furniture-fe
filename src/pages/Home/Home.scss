@@ -1,0 +1,213 @@
+@use "../../SCSS/" as *;
+
+.quick {
+    background-image: url("../../../public/images/bg-quickshop.png");
+    margin-bottom: 80px;
+
+    &__container {
+        background-color: #FFF;
+        margin: 65px 0 75px;
+        padding: 35px 15px 40px 15px;
+    }
+
+    &__content {
+        @include flex(center, center);
+        flex-direction: column;
+
+        h2 {
+            font-size: 28px;
+            line-height: 50px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: $font-medium
+        }
+
+        a {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 34px;
+            fill: #000;
+            color: #000;
+            background-color: rgba(2, 1, 1, 0);
+            border: 2px solid #000;
+            border-radius: 20px 20px 20px 20px;
+            padding: 0 30px 0 30px;
+
+            &:hover {
+                color: #FFF;
+                background-color: $main-color;
+                border-color: $main-color;
+            }
+        }
+    }
+}
+
+.instagram {
+    &__heading {
+        margin-bottom: 40px;
+
+        &__content {
+            padding-bottom: 18px;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: calc(50% - 24px);
+                background: #ff6f00;
+                width: 48px;
+                height: 2px;
+            }
+
+            .icon {
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            h2 {
+                font-size: 30px;
+                font-family: $font-medium;
+                line-height: 42px;
+                margin-bottom: 5px;
+                text-align: center;
+            }
+
+            h6 {
+                text-align: center;
+                font-size: 16px;
+                color: #a3a3a3;
+                line-height: 24px;
+            }
+        }
+    }
+
+    &__slider {
+        &__child {
+            display: inline-block;
+            position: relative;
+            vertical-align: top;
+            overflow: hidden;
+            aspect-ratio: 750 / 750;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform .3s ease;
+            }
+
+            &::before,
+            &::after {
+                position: absolute;
+                left: 0;
+                width: 100%;
+                opacity: 0;
+                visibility: hidden;
+                -webkit-transition: opacity .3s ease;
+                transition: opacity .3s ease;
+            }
+
+            &::before {
+                content: "";
+                top: 0;
+                height: 100%;
+                background-color: rgba(37, 37, 37, .45);
+                z-index: 1;
+            }
+
+            &::after {
+                content: "\f16d";
+                color: #fff;
+                font-family: FontAwesome;
+                font-size: 30px;
+                font-weight: 400;
+                top: calc(50% - 13px);
+                text-align: center;
+                line-height: 100%;
+                z-index: 2;
+            }
+
+            &:hover {
+
+                &::before,
+                &::after {
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+                img {
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .quick {
+        margin-bottom: 40px;
+
+        &__container {
+            margin: 40px 0;
+            padding: 20px 10px 30px 10px;
+        }
+
+        &__content {
+            h2 {
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+
+    .instagram {
+        &__heading {
+            &__content {
+                padding-bottom: 8px;
+
+                .icon {
+                    margin-bottom: 10px;
+                }
+
+                h2 {
+                    font-size: 26px;
+                    line-height: 36px;
+                }
+
+                h6 {
+                    font-size: 14px;
+                    line-height: 20px;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .quick{
+        &__container{
+            margin: 40px 20px;
+        }
+        &__content{
+            h2{
+                font-size: 20px;
+                line-height: 26px;
+            }
+            a{
+                color: #FFF;
+                background-color: $main-color;
+                border-color: $main-color;
+            }
+        }
+    }
+    .instagram{
+        &__heading{
+            margin-bottom: 20px;
+            &__content{
+                padding-bottom: 3px;
+            }
+        }
+    }
+}

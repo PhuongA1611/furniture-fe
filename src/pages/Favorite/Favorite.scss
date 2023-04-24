@@ -1,0 +1,77 @@
+@use "../../SCSS/" as *;
+
+.favorite{
+    &__table{
+        table{
+            border: 1px solid #ddd;
+            tbody{
+                tr{
+                    td{
+                        vertical-align: middle;
+                        padding: 15px 10px;
+                        &.td-btn-close{
+                            width: 100px;
+                        }
+                        &.td-image{
+                            border-left: 1px solid #ddd;
+                            width: 120px;
+                            padding-left: 30px;
+                        }
+                        &.td-add-cart{
+                            border-left: 1px solid #ddd;
+                            padding-left: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__image{
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__content{
+        a{
+            font-family: $font-semiBold;
+            font-size: 16px;
+            line-height: 24px;
+            color: #000;
+            margin-bottom: 20px;
+            &:hover{
+                color: $main-color;
+            }
+        }
+        p{
+            font-size: 16px;
+            line-height: 24px;
+            font-family: $font-medium;
+            color: #000;
+            del{
+                color: #ddd;
+                margin-right: 5px;
+            }
+            ins{
+                color: #ff4545;
+                text-decoration: none;
+                font-family: $font-medium;
+            }
+        }
+    }
+    &__btn-cart{
+        padding: 5px 10px;
+        font-size: 12px;
+        line-height: 18px;
+        color: #fff;
+        background-color: $main-color;
+        &:hover{
+            background-color: $main-color-hover;
+        }
+    }
+}

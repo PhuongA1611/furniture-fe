@@ -1,0 +1,330 @@
+@use "../../SCSS/" as *;
+
+.category {
+    &__title {
+        margin-bottom: 30px;
+        font-family: $font-semiBold;
+        font-size: 16px;
+        line-height: 24px;
+        border-bottom: 1px solid #e1e1e1;
+        text-transform: uppercase;
+        padding: 0 0 10px;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 50px;
+            height: 1.5px;
+            background: $main-color;
+        }
+    }
+
+    &__nav {
+        margin-bottom: 50px;
+
+        ul {
+            padding: 0;
+            margin: -7px 0;
+
+            li {
+                color: #a3a3a3;
+                padding: 2px;
+                list-style: none;
+
+                a {
+                    color: #a3a3a3;
+                    font-size: 14px;
+                    line-height: 20px;
+
+                    .active {
+                        &::before {
+                            content: "\f0da";
+                        }
+                    }
+                }
+
+                &::before {
+                    line-height: 22px;
+                    font-family: FontAwesome;
+                    font-size: 13px;
+                    float: left;
+                    padding-right: 10px;
+                    line-height: 25px;
+                    color: $main-color;
+                    top: -2px;
+                    transition: all .5s ease;
+                    opacity: 0;
+                    visibility: hidden;
+                    display: none;
+                }
+
+                &:has(a.active),
+                &:hover {
+                    a {
+                        color: $main-color;
+                    }
+
+                    &::before {
+                        content: "\f0da";
+                        visibility: visible;
+                        opacity: 1;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    &__list {}
+
+    &__select {
+        @include flex(space-between, center);
+        margin-bottom: 40px;
+
+        &__show {
+            @include flex(center, center);
+            border: 1px solid #e1e1e1;
+            padding: 5px 20px;
+            gap: 15px;
+
+            label {
+                margin-bottom: 0;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 12px;
+            }
+
+            ul {
+                @include flex(center, center);
+                gap: 15px;
+                margin-bottom: 0;
+                padding: 0;
+
+                li {
+                    position: relative;
+
+                    &:hover {
+                        span.type-limit {
+                            color: $main-color;
+                        }
+                    }
+
+                    span.type-limit {
+                        font-size: 14px;
+                        line-height: 23px;
+                        color: #a3a3a3;
+                        font-family: $font-medium;
+                    }
+
+                    input[type='radio'] {
+                        position: absolute;
+                        opacity: 0;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        cursor: pointer;
+                    }
+
+                    &:has(input[type='radio']:checked) {
+                        span.type-limit {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__sort {
+            position: relative;
+
+            #dropdown-sort-btn {
+                background: #fff;
+                color: #000;
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 33px;
+                border: 1px solid #e1e1e1;
+                border-radius: 0;
+                padding: 0 20px;
+                text-transform: capitalize;
+                cursor: pointer;
+
+                span {
+                    position: relative;
+                    font-size: 12px;
+                    text-transform: uppercase;
+                    font-family: $font-semiBold;
+                    margin-right: 5px;
+                }
+            }
+
+            .dropdown-menu {
+                border-radius: 4px;
+            }
+
+            .dropdown-sort {
+                margin-bottom: 0;
+                min-width: 164px;
+                padding: 5px 15px;
+                font-size: 14px;
+                color: #212529;
+                text-align: left;
+                list-style: none;
+                background-color: #fff;
+
+                li {
+                    padding: 2px 0;
+
+                    a {
+                        font-size: 14px;
+                        line-height: 20px;
+                        text-transform: capitalize;
+                        font-weight: 400;
+                        color: #a3a3a3;
+
+                        &:hover {
+                            color: $main-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+        row-gap: 0px;
+    }
+
+    &__pagination {
+        margin-bottom: 40px;
+        padding-top: 10px;
+
+        .pagination {
+            gap: 10px;
+
+            .page-item {
+                .page-link {
+                    border-radius: 0;
+                    width: 40px;
+                    height: 40px;
+                    @include flex(center, center);
+                    border-color: #ddd;
+                    color: #a3a3a3;
+                }
+
+                &.active {
+                    .page-link {
+                        background-color: $main-color;
+                        border-color: $main-color;
+                        color: #fff;
+                    }
+                }
+
+                &:first-child,
+                &:last-child {
+                    .page-link {
+                        span {
+                            font-size: 22px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .category {
+        &__title {
+            font-size: 20px;
+            line-height: 30px;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+
+            &::before {
+                width: 70px;
+            }
+        }
+
+        &__nav {
+
+            ul {
+                padding-left: 10px;
+
+                li {
+                    a {
+                        font-size: 16px;
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+
+        &__select {
+            margin-bottom: 30px;
+        }
+
+        &__content {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .category {
+        &__title {
+            font-size: 18px;
+            line-height: 26px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+
+            &::before {
+                width: 70px;
+            }
+        }
+
+        &__nav {
+            margin-bottom: 30px;
+            ul {
+                li {
+                    a {
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+
+        &__select {
+            margin-bottom: 30px;
+        }
+
+        &__content {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        &__pagination{
+            .pagination{
+                .page-item{
+                    .page-link{
+                        width: 30px;
+                        height: 30px;
+                    }
+                    &:first-child,
+                &:last-child {
+                    .page-link {
+                        span {
+                            font-size: 20px;
+                        }
+                    }
+                }
+                }
+            }
+        }
+    }
+}

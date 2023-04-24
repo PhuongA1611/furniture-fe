@@ -1,0 +1,13 @@
+.addProduct{
+    margin: 10px 70px;
+    &__form{
+        &__grid{
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            column-gap: 50px;
+        }
+    }
+    &__group{
+        display: flex;
+    }
+}

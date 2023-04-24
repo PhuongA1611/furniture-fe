@@ -1,0 +1,110 @@
+@use "../../SCSS/" as *;
+
+.adver {
+    margin-bottom: 70px;
+
+    &__item {
+        overflow: hidden;
+        position: relative;
+        aspect-ratio: 604 / 384;
+        margin-bottom: 15px;
+
+        &:hover {
+            img {
+                transform: scale(1.1);
+            }
+        }
+
+        &__image {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all 1s ease;
+            }
+        }
+
+        &__wrap {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            padding: 54px;
+            background-color: rgba($color: #a3a3a3, $alpha: 0.3);
+        }
+
+        &__content {
+            @include flex(center, center);
+            flex-direction: column;
+            border: 2px solid #fff;
+            width: 100%;
+            height: 100%;
+
+            h5 {
+                text-transform: uppercase;
+                font-family: $font-semiBold;
+                font-size: 16px;
+                line-height: 24px;
+                color: #fff;
+                margin-bottom: 0;
+            }
+
+            h3 {
+                margin: 0 0 15px;
+                font-size: 45px;
+                color: #fff;
+                font-family: $font-medium;
+            }
+
+            a {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 38px;
+                display: inline-block;
+                padding: 0 28px;
+                color: #fff;
+                border-radius: 20px;
+                background: $main-color;
+
+                &:hover {
+                    background: #cc5900;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 991px) {
+    .adver {
+        margin-bottom: 50px;
+
+        &__item {
+            margin-bottom: 20px;
+
+            h3 {
+                font-size: 38px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .adver{
+        &__item{
+            &__wrap{
+                padding: 20px;
+            }
+            &__content{
+                h5{
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+                h3{
+                    font-size: 30px;
+                    line-height: 42px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,237 @@
+@use "../../SCSS/" as *;
+
+.about {
+    padding-top: 70px;
+
+    &__logo {
+        text-align: center;
+        margin-bottom: 40px;
+
+        h2 {
+            font-size: 45px;
+            line-height: 50px;
+            font-family: $font-medium;
+            margin-bottom: 15px;
+
+            span {
+                color: $main-color;
+                font-family: $font-semiBold;
+            }
+        }
+
+        h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            color: $text-blur-color;
+        }
+    }
+
+    &__banner {
+        overflow: hidden;
+        aspect-ratio: 994 / 524;
+        width: 100%;
+        margin-bottom: 100px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease 0s, transform 1s ease 0s;
+        }
+
+        &:hover {
+            img {
+                transform: scale3d(1.1, 1.1, 1);
+            }
+        }
+    }
+
+    &__reverse{
+        flex-direction: row-reverse;
+    }
+
+    &__element {
+        margin-bottom: 120px;
+        &__img {
+            aspect-ratio: 482 / 321;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+
+                &:hover {
+                    animation-name: about-image-animation;
+                    animation-duration: 1s;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: 1;
+                }
+            }
+        }
+
+        &__wrapper {}
+
+        &__heading {
+            margin-bottom: 20px;
+            h5 {
+                font-size: 14px;
+                text-transform: uppercase;
+                line-height: 20px;
+                color: $main-color;
+            }
+            h3{
+                font-size: 34px;
+                text-transform: capitalize;
+                line-height: 40px;
+                font-family: $font-medium;
+               margin-bottom: 20px;
+            }
+            &::after{
+                content: '';
+                display: block;
+                height: 1.6px;
+                width: 50px;
+                background-color: #CFCFCF;
+            }
+        }
+
+        &__content{
+            p{
+                color: #a3a3a3;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 10px;
+                text-align: justify;
+            }
+        }
+    }
+    &__pl{
+        padding-left: 40px;
+    }
+    &__pr{
+        padding-right: 40px;
+    }
+}
+
+@keyframes about-image-animation {
+    16.65% {
+        transform: translateX(8px);
+    }
+
+    33.3% {
+        transform: translateX(-6px);
+    }
+
+    49.95% {
+        transform: translateX(4px);
+    }
+
+    66.6% {
+        transform: translateX(-2px);
+    }
+
+    83.25% {
+        transform: translateX(1px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .about{
+        &__element{
+            &__content{
+                p{
+                    font-size: 12px;
+                    line-height: 18px;
+                }
+            }
+        }
+        &__pl{
+            padding-left: 5px;
+        }
+        &__pr{
+            padding-right: 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .about{
+        padding-top: 50px;
+        &__logo{
+            margin-bottom: 25px;
+            h2{
+                font-size: 34px;
+                line-height: 40px;
+                margin-bottom: 10px;
+            }
+            h4{
+                font-size: 12px;
+                line-height: 18px;
+            }
+        }
+        &__banner{
+            margin-bottom: 50px;
+        }
+        &__element{
+            margin-bottom: 60px;
+            &__heading{
+                margin-bottom: 10px;
+                h5{
+                    font-size: 11px;
+                    line-height: 16px;
+                    margin-bottom: 0;
+                }
+                h3{
+                    font-size: 20px;
+                    line-height: 25px;
+                    margin-bottom: 5px;
+                    &::after{
+                        width: 30px;
+                        height: 1px;
+                    }
+                }
+            }
+            &__content{
+                margin-bottom: 10px;
+                p{
+                    font-size: 11px;
+                    line-height: 16px;
+                    margin-bottom: 7px;
+                }
+            }
+        }
+        &__pl{
+            padding-left: 0;
+        }
+        &__pr{
+            padding-right: 0;
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .about{
+        padding-top: 30px;
+        &__logo{
+            margin-bottom: 25px;
+            h2{
+                font-size: 24px;
+                line-height: 30px;
+                margin-bottom: 10px;
+            }
+            h4{
+                font-size: 11px;
+                line-height: 16px;
+            }
+        }
+        &__banner{
+            margin-bottom: 40px;
+        }
+        &__element{
+            margin-bottom: 30px;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@use "../../SCSS/" as *;
+
+.element {
+    margin-bottom: 70px;
+
+    &__child {
+        border: 1px solid #dfdfdf;
+        border-radius: 4px;
+        padding: 45px 15px 30px 15px;
+
+        &__icon {
+            color: #c0c0c0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 18px;
+            line-height: 24px;
+            font-family: $font-medium;
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        p {
+            color: #a3a3a3;
+            font-size: 14px;
+            line-height: 22px;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .element {
+        margin-bottom: 30px;
+
+        &__child {
+            margin-bottom: 20px;
+
+        }
+    }
+}
