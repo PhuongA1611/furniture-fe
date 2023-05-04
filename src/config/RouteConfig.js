@@ -48,7 +48,7 @@ const RouteConfig = () => {
                     element={<Cart />}
                 />
                 <Route
-                    path='check-out'
+                    path='checkout'
                     element={<Checkout />}
                 />
                 <Route
@@ -85,7 +85,11 @@ const RouteConfig = () => {
                         element={<Address />}
                     />
                     <Route
-                        path='addresses/:addressId'
+                        path='addresses/new-address'
+                        element={<AddressDetail />}
+                    />
+                    <Route
+                        path='addresses/edit/:addressId'
                         element={<AddressDetail />}
                     />
                 </Route>

@@ -4,23 +4,23 @@ import bannerReducer from "./bannerSlice";
 import categoryReducer from "./CategorySlice";
 import productReducer from "./productSlice";
 import searchReducer from "./searchSlice";
-import userReducer from "./UserSlice";
+import userReducer from "./userSlice";
 import cartLocalReducer from "./cartLocalSlice";
 import FavoriteReducer from "./favoriteSlice";
 import cartReducer from "./cartSlice";
-import checkoutReducer from "./checkoutSlice";
+import orderReducer from "./orderSlice";
 
 const rootReducer = {
     auth: authReducer,
     category: categoryReducer,
     product: productReducer,
-    users: userReducer,
+    user: userReducer,
     banner: bannerReducer,
     search: searchReducer,
     favorite: FavoriteReducer,
     cartLocal: cartLocalReducer,
     cart: cartReducer,
-    checkout: checkoutReducer,
+    order: orderReducer,
 }
 const store = configureStore({
     reducer: rootReducer,

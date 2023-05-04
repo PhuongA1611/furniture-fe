@@ -37,7 +37,7 @@ const cartLocalSlice = createSlice({
             if (!existingItem) {
                 // console.log("1");
                 state.cartItems.push({
-                    id: newItem.id,
+                    productid: newItem.id,
                     productName: newItem.productName,
                     productThumbnail: newItem.productThumbnail,
                     sellingPrice: newItem.sellingPrice,

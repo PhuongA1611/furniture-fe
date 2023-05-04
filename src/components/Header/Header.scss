@@ -318,7 +318,7 @@
                     }
                 }
 
-                &.check-out {
+                &.checkout {
                     &:hover {
                         background-color: $main-color;
                         color: #fff;
@@ -756,6 +756,10 @@
         }
 
         &__login {
+            display: none;
+        }
+
+        &__favorite{
             display: none;
         }
 

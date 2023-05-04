@@ -3,6 +3,7 @@ import { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { ProductCard } from '..'
 import "swiper/css/navigation";
+import "./ProductSlider.scss"
 
 const ProductSlider = (props) => {
     const { listProduct } = props
@@ -12,7 +13,6 @@ const ProductSlider = (props) => {
             {
                 listProduct && (<div className='product-slider'>
                     <Swiper
-                        loop={true}
                         slidesPerView={2}
                         spaceBetween={24}
                         breakpoints={{
@@ -25,7 +25,7 @@ const ProductSlider = (props) => {
                         }}
                         modules={[Navigation]}
                         navigation={true}
-                        className="main-slider"
+                        className="main-slider product-slider__wrapper"
                     >
                         {
                             listProduct.map((item, index) => (

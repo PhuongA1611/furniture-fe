@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import cartApi from "../api/cartApi";
 
-export const getListCart = createAsyncThunk('user/getListCart', async (params) => await cartApi.getListCart(params));
+export const getListCart = createAsyncThunk('cart/getListCart', async (params) => await cartApi.getListCart(params));
 
-export const addActiveCart = createAsyncThunk('category/addActiveCart', async (params) => await cartApi.addcart(params));
+export const addActiveCart = createAsyncThunk('cart/addActiveCart', async (params) => await cartApi.addcart(params));
 
 // export const deleteUser = createAsyncThunk('user/deleteuser', async (id) => userApi.deleteuser(id));
 
@@ -22,7 +22,8 @@ const userSlice = createSlice({
             const cart = [];
             action.payload.data && action.payload.data.map((item, index) => {
                 cart.push({
-                    id: item.productId,
+                    id: item.id,
+                    productId: item.productId,
                     productName: item.products.productName,
                     productThumbnail: item.products.productThumbnail,
                     sellingPrice: item.products.sellingPrice,

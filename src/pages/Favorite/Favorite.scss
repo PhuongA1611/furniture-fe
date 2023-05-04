@@ -64,6 +64,13 @@
             }
         }
     }
+    &__btn-delete{
+        font-size: 13px;
+        line-height: 20px;
+        color: #a3a3a3;
+        background-color: transparent;
+        display: none;
+    }
     &__btn-cart{
         padding: 5px 10px;
         font-size: 12px;
@@ -72,6 +79,97 @@
         background-color: $main-color;
         &:hover{
             background-color: $main-color-hover;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .favorite{
+        &__table{
+            table{
+                tbody{
+                    tr{
+                        td{
+                            &.td-btn-close{
+                                width: 80px;
+                            }
+                            &.td-image{
+                                width: 110px;
+                                padding-left: 20px;
+                            }
+                            &.td-add-cart{
+                                border-left: 1px solid #ddd;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 480px) {
+    .favorite{
+        &__table{
+            table{
+                tbody{
+                    tr{
+                        display: flex;
+                        flex-wrap: wrap;
+                        td{
+                            border-bottom: none;
+                            padding: 10px;
+                            &.td-btn-close{
+                                width: 50px;
+                                display: none;
+                            }
+                            &.td-image{
+                                width: auto;
+                                padding-left: 10px;
+                                padding-right: 5px;
+                                border-left: none;
+                            }
+                            &.td-add-cart{
+                                border-left: none;
+                                width: 100%;
+                                border-top: 1px dashed #ddd;
+                                border-bottom: 1px solid #ddd;
+                                padding-bottom: 15px;
+                                padding-left: 10px;
+                                display: flex;
+                                justify-content: space-between;
+                            }
+                        }
+                        
+                        &:last-child{
+                            td{
+                                &.td-add-cart{
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &__image{
+            width: 80px;
+            height: 80px;
+        }
+        &__content{
+            height: 100%;
+            @include flex(center,start);
+            flex-direction: column;
+            a{
+                font-size: 14px;
+                line-height: 20px;
+                margin-bottom: 0;
+            }
+            p{
+
+            }
+        }
+        &__btn-delete{
+            display: block;
         }
     }
 }

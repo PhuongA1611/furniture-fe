@@ -161,6 +161,11 @@ const Header = () => {
                             </Nav.Link>
                             <Nav.Link eventKey="6" className='mobile-nav-link'>
                               {
+                                isLogined ? <NavLink to="/favorite">Favorite</NavLink> : <Link to="/login" onClick={() => { message.warning("Please login!") }}>Favorite</Link>
+                              }
+                            </Nav.Link>
+                            <Nav.Link eventKey="7" className='mobile-nav-link'>
+                              {
                                 isLogined ? <NavLink to="/account">Account</NavLink> : <NavLink to="/login">Login</NavLink>
                               }
                             </Nav.Link>
@@ -234,7 +239,10 @@ const Header = () => {
                           </div>
                           <div className='header__cart__btn'>
                             <Link to='/cart' className='view-cart'>View cart</Link>
-                            <Link to='/check-out' className='check-out'>Check out</Link>
+                            {
+                              isLogined ?
+                                <Link to='/checkout' className='checkout'>Check out</Link> : <Link to='/login' className='checkout' onClick={() => { message.warning("Please login!") }}>Check out</Link>
+                            }
                           </div>
                         </>
                       )

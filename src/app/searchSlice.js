@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import productApi from "../api/productApi";
 
-export const searchProduct = createAsyncThunk('product/searchProduct', async ( params ) => await productApi.searchProducts(params));
+export const searchProduct = createAsyncThunk('search/searchProduct', async ( params ) => await productApi.searchProducts(params));
 
 const searchSlice = createSlice({
     name: 'search',

@@ -237,6 +237,12 @@ img {
             text-align: center;
             display: inline-block;
         }
+
+        &.swiper-button-disabled {
+            opacity: .35;
+            cursor: auto;
+            pointer-events: auto;
+        }
     }
 
     .swiper-button-prev {
@@ -334,5 +340,21 @@ img {
         background-color: $main-color;
         border-color: $main-color;
         color: #fff;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .main-slider {
+        .swiper-button-prev,
+        .swiper-button-next {
+            opacity: 1;
+            visibility: visible;
+            top: 53%;
+            &.swiper-button-disabled {
+                opacity: .35;
+                cursor: auto;
+                pointer-events: auto;
+            }
+        }
     }
 }

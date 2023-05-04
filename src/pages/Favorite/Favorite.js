@@ -73,7 +73,7 @@ const Favorite = () => {
                                         listFavorite.map((item, index) => (
                                             <tr key={index}>
                                                 <td className='td-btn-close'>
-                                                    <button className='favorite__btn-delete btn-main-close' onClick={() => handleDelete(item.id)}><FontAwesomeIcon icon={faClose} size='xs' /></button>
+                                                    <button className='btn-main-close' onClick={() => handleDelete(item.id)}><FontAwesomeIcon icon={faClose} size='xs' /></button>
                                                 </td>
                                                 <td className='td-image'>
                                                     <div className='favorite__image'>
@@ -97,7 +97,9 @@ const Favorite = () => {
                                                         </p>
                                                     </div>
                                                 </td>
-                                                <td className='td-add-cart'><button className='favorite__btn-cart' onClick={() => addToCart(item.id)}>Add to cart</button></td>
+                                                <td className='td-add-cart'>
+                                                <button className='favorite__btn-delete ' onClick={() => handleDelete(item.id)}>Delete from favorite</button>
+                                                <button className='favorite__btn-cart' onClick={() => addToCart(item.id)}>Add to cart</button></td>
                                             </tr>
                                         ))
                                     }

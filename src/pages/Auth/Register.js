@@ -7,7 +7,7 @@ import userIcon from '../../assets/images/u_user-circle.png'
 
 import './Login.scss'
 import { useDispatch } from 'react-redux'
-import { loginUser, registerUser } from '../../app/AuthSlice'
+import { registerUser } from '../../app/AuthSlice'
 import { useNavigate } from 'react-router-dom'
 
 const phoneRegExp = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
@@ -28,13 +28,7 @@ const Register = () => {
   const onSubmit = data => {
     try {
       dispatch(registerUser(data)).then(() => {
-        const params = {
-          email: data.email,
-          password: data.password,
-        }
-        dispatch(loginUser(params)).then(() => {
-          navigate('/home');
-        })
+        navigate(-1);
       })
     } catch (error) {
       console.log(error);

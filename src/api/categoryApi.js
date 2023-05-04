@@ -14,9 +14,7 @@ const categoryApi = {
         return axiosClient.post(url, params, customConfig);
     },
     updateCategory: (params) => {
-        const {id, formData} = params
-        console.log("id:" +id);
-        console.log("params", formData);
+        const {id, formData} = params;
         const url = 'categories/' + id;
         const customConfig = {
             headers:

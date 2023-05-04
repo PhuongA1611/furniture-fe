@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import favoriteApi from "../api/favoriteApi";
 import { message } from "antd";
 
-export const addFavorite = createAsyncThunk('category/addFavorite', async (params) => await favoriteApi.addFavorite(params));
+export const addFavorite = createAsyncThunk('favorite/addFavorite', async (params) => await favoriteApi.addFavorite(params));
 
-export const deleteFavorite = createAsyncThunk('category/deleteFavorite', async (params) => await favoriteApi.deleteFavorite(params));
+export const deleteFavorite = createAsyncThunk('favorite/deleteFavorite', async (params) => await favoriteApi.deleteFavorite(params));
 
 const userSlice = createSlice({
     name: 'favorite',

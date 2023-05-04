@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faClose, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { cartLocalactions } from '../../app/cartLocalSlice';
+import { message } from 'antd';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -132,7 +133,10 @@ const Cart = () => {
                                                 </tr>
                                             </tbody>
                                         </Table>
-                                        <Link to="/check-out">PROCEED TO CHECKOUT</Link>
+                                        {
+                                            isLogined ?
+                                                <Link to='/checkout' className='checkout'>PROCEED TO CHECKOUT</Link> : <Link to='/login' className='checkout' onClick={() => { message.warning("Please login!") }}>PROCEED TO CHECKOUT</Link>
+                                        }
                                     </div>
                                 </Col>
                             </Row>

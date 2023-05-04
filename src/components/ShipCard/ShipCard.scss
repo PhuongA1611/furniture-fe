@@ -1,0 +1,41 @@
+@use "../../SCSS/" as *;
+
+.shipcard {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+
+    &__heading {
+        padding: 15px;
+        background-color: #f5f5f5;
+        @include flex(space-between, center);
+
+        h3 {
+            font-size: 14px;
+            line-height: 20px;
+            font-family: $font-medium;
+            color: #000;
+            margin-bottom: 0;
+        }
+
+        a {
+            color: $main-color;
+            font-size: 14px;
+            line-height: 20px;
+            font-family: $font-medium;
+
+            &:hover {
+                color: $main-color-hover;
+            }
+        }
+    }
+
+    &__content {
+        padding: 15px;
+
+        address {
+            font-size: 14px;
+            line-height: 20px;
+            color: #a3a3a3;
+        }
+    }
+}

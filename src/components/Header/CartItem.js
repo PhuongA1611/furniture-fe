@@ -34,9 +34,9 @@ const CartItem = (props) => {
     return (
         <div className='header__cart__item mini-item'>
             <div className='mini-item__wrapper'>
-                <Link to={`/shop/` + item.id}><img src={item.productThumbnail} /></Link>
+                <Link to={`/shop/` + item.productId}><img src={item.productThumbnail} /></Link>
                 <div className='mini-item__content'>
-                    <Link to={`/shop/` + item.id} className='mini-item__content__title'>{item.productName}</Link>
+                    <Link to={`/shop/` + item.productId} className='mini-item__content__title'>{item.productName}</Link>
                     <div className='mini-item__content__price'>
                         {
                             sale ? (

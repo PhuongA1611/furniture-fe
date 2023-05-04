@@ -58,6 +58,10 @@
                 line-height: 20px;
             }
 
+            .input-hidden {
+                display: none;
+            }
+
             &.select-radio {
                 @include flex(start, center);
                 gap: 20px;
@@ -82,6 +86,61 @@
                 &:hover {
                     background-color: $main-color-hover;
                 }
+            }
+
+            .dropdown-btn {
+                width: 100%;
+                border-bottom: 1px solid #ddd;
+
+                button {
+                    width: 100%;
+                    background-color: transparent;
+                    border: none;
+                    color: #000;
+                    text-align: left;
+                    padding: 5px 6px;
+
+                    span {
+                        padding-right: 10px;
+                        font-size: 14px;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .dropdown-menu {
+                max-height: 200px;
+                overflow: auto;
+                width: 100%;
+
+                ul {
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+
+                    li {
+                        padding: 0 15px;
+                        width: 100%;
+                        a {
+                            display: block;
+                            width: 100%;
+                            font-size: 14px;
+                            line-height: 20px;
+                        }
+
+                        &:hover {
+                            background-color: #99c2fe;
+
+                            a {
+                                color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .dropdown-toggle::after {
+                float: right;
             }
         }
     }
@@ -126,9 +185,10 @@
 
     &__order {
         table {
-            &.table-order{
+            &.table-order {
                 min-width: 500px;
             }
+
             thead {
                 background: #f5f5f5;
                 border: 2px solid #f5f5f5;
@@ -303,45 +363,27 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             column-gap: 20px;
-            row-gap: 20px;
+            row-gap: 10px;
+        }
+    }
+
+    &__address-detail {
+        h2 {
+            font-size: 20px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            font-family: $font-semiBold;
+            display: inline-block;
         }
 
-        &__item {
-            border: 1px solid #ddd;
-
-            &__heading {
-                padding: 15px;
-                background-color: #f5f5f5;
-                @include flex(space-between, center);
-
-                h3 {
-                    font-size: 14px;
-                    line-height: 20px;
-                    font-family: $font-medium;
-                    color: #000;
-                    margin-bottom: 0;
-                }
-
-                a {
-                    color: $main-color;
-                    font-size: 14px;
-                    line-height: 20px;
-                    font-family: $font-medium;
-
-                    &:hover {
-                        color: $main-color-hover;
-                    }
-                }
-            }
-
-            &__content {
-                padding: 15px;
-
-                address {
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #a3a3a3;
-                }
+        .delete-btn {
+            display: inline-block;
+            float: right;
+            background-color: transparent;
+            color: $main-color;
+            font-family: $font-medium;
+            &:hover{
+                color: $main-color-hover;
             }
         }
     }
@@ -398,10 +440,12 @@
                 }
             }
         }
-        &__address{
-            &__heading{
+
+        &__address {
+            &__heading {
                 display: block;
-                p{
+
+                p {
                     font-size: 12px;
                     line-height: 18px;
                 }
@@ -432,7 +476,8 @@
                     font-size: 12px;
                     line-height: 18px;
                 }
-                h2{
+
+                h2 {
                     font-size: 18px;
                     line-height: 26px;
                 }
@@ -443,27 +488,33 @@
                     width: 40px;
                 }
             }
-            &__address{
-                h3{
+
+            &__address {
+                h3 {
                     font-size: 18px;
                     line-height: 26px;
                 }
-                address{
+
+                address {
                     font-size: 12px;
                     line-height: 18px;
                     padding: 15px 20px 20px;
                 }
             }
         }
-        &__address{
-            &__container{
+
+        &__address {
+            &__container {
                 display: block;
             }
-            &__item{
+
+            &__item {
                 margin-bottom: 15px;
-                &__content{
+
+                &__content {
                     padding: 10px;
-                    address{
+
+                    address {
                         margin-bottom: 5px;
                         font-size: 12px;
                         line-height: 18px;

@@ -8,9 +8,11 @@ import { Breadcrumb } from '../../components'
 import userIcon from '../../assets/images/u_user-circle.png'
 
 import './Login.scss'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getMe, loginUser } from '../../app/AuthSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
+import { addActiveCart, getListCart } from '../../app/cartSlice'
+import { cartLocalactions } from '../../app/cartLocalSlice'
 
 let loginSchema = yup.object().shape({
     email: yup.string().email().required('This field is required'),
@@ -23,10 +25,27 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema),
     });
+
+    const cartLocal = useSelector((state) => state.cartLocal.cartItems);
+
     const onSubmit = data => {
         try {
             dispatch(loginUser(data)).then(() => {
                 dispatch(getMe());
+                if (cartLocal.length !== 0) {
+                    cartLocal.map((item, índex) => {
+                        const itemAdd = {
+                            productId: item.id,
+                            quantity: item.quantity,
+                            productSize: item.size,
+                            productColor: item.color,
+                        }
+                        dispatch(addActiveCart(itemAdd)).then(() => {
+                            dispatch(cartLocalactions.deleteItem(item.id));
+                            dispatch(getListCart());
+                        });
+                    })
+                }
                 navigate(-1);
             })
         } catch (error) {

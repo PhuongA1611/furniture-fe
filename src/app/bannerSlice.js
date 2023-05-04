@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import bannerApi from "../api/bannerApi";
 
-export const getListBanner = createAsyncThunk('user/getListBanner', async (params) => await bannerApi.getListBanner(params));
+export const getListBanner = createAsyncThunk('banner/getListBanner', async (params) => await bannerApi.getListBanner(params));
 
-export const createBanner = createAsyncThunk('category/createBanner', async (params) => await bannerApi.createBanner(params));
+export const createBanner = createAsyncThunk('banner/createBanner', async (params) => await bannerApi.createBanner(params));
 
 // export const deleteUser = createAsyncThunk('user/deleteuser', async (id) => userApi.deleteuser(id));
 
