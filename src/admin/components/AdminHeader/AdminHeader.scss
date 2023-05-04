@@ -2,13 +2,12 @@
 
 .admin-header{
     background-color: #001529;
-    height: 80px;
     padding: 0 28px;
-    @include flex(start, center);
+    @include flex(space-between, center);
     h1{
         font-family: $font-bold;
-        font-size: 42px;
-        line-height: 60px;
+        font-size: 2rem;
+        line-height: 3rem;
         color: white;
         text-transform: uppercase;
         margin-bottom: 0;

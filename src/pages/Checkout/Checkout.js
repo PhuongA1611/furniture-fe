@@ -9,7 +9,7 @@ import { createOrder, getProvince } from '../../app/orderSlice';
 import { ShipCard } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
 import { getListCart } from '../../app/cartSlice';
-import { getListShipping } from '../../app/UserSlice';
+import { getListShipping } from '../../app/userSlice';
 
 const checkoutSchema = yup.object().shape({
   shipping: yup.number().required(`you haven't chosen the shipping!`),

@@ -2,7 +2,7 @@ import { message, Popconfirm, Space, Table } from 'antd';
 import Column from 'antd/es/table/Column';
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { getListUser } from '../../../app/UserSlice';
+import { getListUser } from '../../../app/userSlice';
 
 const AdminUser = () => {
   const dispatch = useDispatch();
