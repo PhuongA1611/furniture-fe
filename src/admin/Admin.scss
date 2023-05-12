@@ -19,7 +19,8 @@
     height: calc(100vh);
     background-color: #001529;
     padding-bottom: 100px;
-    h2{
+
+    h2 {
         font-size: 36px;
         line-height: 1.2;
         margin-bottom: 30px;
@@ -42,4 +43,55 @@ table {
     img {
         max-width: 150px;
     }
+}
+
+.btn-status{
+    text-transform: capitalize;
+    &:hover{
+        color: #000 !important;
+        border-color: #000 !important;
+    }
+}
+
+.status{
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid #73737b;
+    color: #73737b;
+    font-size: 11px;
+    line-height: 16px;
+    text-transform: capitalize;
+    &.pending{
+        background-color: #fcdf78;
+    }
+    &.processing{
+        background-color: #cee4f3;
+    }
+    &.completed{
+        background-color: #ebf6d7;
+    }
+    &.cancelled{
+        background-color: #c7a3ab;
+    }
+}
+
+.btn-pending {
+    background-color: #fcdf78 !important;
+}
+
+.btn-processing {
+    background-color: #cee4f3 !important;
+}
+
+.btn-completed {
+    background-color: #ebf6d7 !important;
+}
+
+.btn-cancelled {
+    background-color: #c7a3ab !important;
+}
+.btn-change{
+    float: right;
+    display: block;
+    margin-top: 10px;
 }

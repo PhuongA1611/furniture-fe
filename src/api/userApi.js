@@ -5,6 +5,10 @@ const userApi = {
         const url = 'users';
         return axiosClient.get(url, { params });
     },
+    updateUser: ({ userId, params }) => {
+        const url = 'users/' + userId;
+        return axiosClient.put(url, params);
+    },
     getShipping: (userId) => {
         const url = 'shipping/' + userId;
         return axiosClient.get(url, {});

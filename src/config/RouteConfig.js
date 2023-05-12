@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import Admin from '../admin/Admin'
-import { AddProduct, AdminBanner, AdminCategory, AdminLogin, AdminOrder, AdminSlider, AdminUser, Dashboard, Products } from '../admin/pages'
+import { AddProduct, AdminBanner, AdminCategory, AdminDetail, AdminLogin, AdminOrder, AdminSlider, AdminUser, Dashboard, Products } from '../admin/pages'
 import { About, Account, Address, AddressDetail, Cart, Category, Checkout, Contact, Detail, Favorite, Home, Login, MainLayout, Order, OrderDetail, Profile, Register } from '../pages'
 
 const RouteConfig = () => {
@@ -71,7 +71,7 @@ const RouteConfig = () => {
                         path='profile'
                         element={<Profile />}
                     />
-                    <Route path='' element={<Navigate replace to="profile" />} />
+                    <Route path='' element={<Navigate replace to="orders" />} />
                     <Route
                         path='orders'
                         element={<Order />}
@@ -147,6 +147,11 @@ const RouteConfig = () => {
                     path='order'
                     exact
                     element={<AdminOrder />}
+                />
+                <Route
+                    path='order/:orderId'
+                    exact
+                    element={<AdminDetail />}
                 />
             </Route>
         </Routes>

@@ -35,7 +35,7 @@ const Login = () => {
                 if (cartLocal.length !== 0) {
                     cartLocal.map((item, índex) => {
                         const itemAdd = {
-                            productId: item.id,
+                            productId: item.productId,
                             quantity: item.quantity,
                             productSize: item.size,
                             productColor: item.color,

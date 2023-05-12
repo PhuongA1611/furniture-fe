@@ -4,31 +4,25 @@ import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faClose, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import ig10 from "../../assets/images/ig-10.png"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { cartLocalactions } from '../../app/cartLocalSlice'
+import { deleteCart, getListCart } from '../../app/cartSlice'
 
 
 const CartItem = (props) => {
 
     const { item } = props;
     const dispatch = useDispatch();
-
-    let sale = true;
-    if (item.discountPrice == 0) {
-        sale = false;
-    }
-
-    const handleMinus = () => {
-        dispatch(cartLocalactions.reduceItem(item.id));
-    }
-
-    const handleAdd = () => {
-        dispatch(cartLocalactions.addItem(item));
-    }
+    const isLogined = useSelector((state) => state.auth.isLogged);
 
     const handleDelete = () => {
-        dispatch(cartLocalactions.deleteItem(item.id));
+        if (isLogined) {
+            dispatch(deleteCart(item.id)).then(() => {
+                dispatch(getListCart());
+            });
+        } else {
+            dispatch(cartLocalactions.deleteItem(item.id));
+        }
     }
 
     return (
@@ -39,13 +33,13 @@ const CartItem = (props) => {
                     <Link to={`/shop/` + item.productId} className='mini-item__content__title'>{item.productName}</Link>
                     <div className='mini-item__content__price'>
                         {
-                            sale ? (
+                            item.discountPrice === 0 ? (
+                                <ins>${item.sellingPrice}</ins>
+                            ) : (
                                 <>
                                     <del>${item.sellingPrice}</del>
                                     <ins>${item.discountPrice}</ins>
                                 </>
-                            ) : (
-                                <ins>${item.sellingPrice}</ins>
                             )
                         }
                         <div className='mini-item__content__quantity'>

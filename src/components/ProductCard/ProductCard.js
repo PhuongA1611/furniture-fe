@@ -16,11 +16,6 @@ const Card = props => {
     const link = '/shop/' + item.id;
     const dispatch = useDispatch();
 
-    // let sale = true;
-    // if (item.discountPrice == 0) {
-    //     sale = false;
-    // }
-
     const isLogined = useSelector((state) => state.auth.isLogged);
 
     const addToCart = () => {

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faClose, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { cartLocalactions } from '../../app/cartLocalSlice';
 import { message } from 'antd';
+import { addActiveCart, deleteCart, getListCart, updateCart } from '../../app/cartSlice';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -28,16 +29,54 @@ const Cart = () => {
         }
     }, [isLogined, cart, cartLocal])
 
-    const handleMinus = (id) => {
-        dispatch(cartLocalactions.reduceItem(id));
+    const handleMinus = (item) => {
+        if (isLogined) {
+            if (item.quantity === 1) {
+                dispatch(deleteCart(item.id)).then(() => {
+                    dispatch(getListCart());
+                });
+            } else {
+                const id = item.id
+                const params = {
+                    productId: item.productId,
+                    quantity: item.quantity - 1,
+                    productSize: item.size,
+                    productColor: item.color,
+                }
+                dispatch(updateCart({ id, params })).then(() => {
+                    dispatch(getListCart());
+                });
+            }
+        } else {
+            dispatch(cartLocalactions.reduceItem(item.id));
+        }
     }
 
     const handleAdd = (item) => {
-        dispatch(cartLocalactions.addItem(item));
+        if (isLogined) {
+            const id = item.id
+            const params = {
+                productId: item.productId,
+                quantity: item.quantity + 1,
+                productSize: item.size,
+                productColor: item.color,
+            }
+            dispatch(updateCart({ id, params })).then(() => {
+                dispatch(getListCart());
+            });
+        } else {
+            dispatch(cartLocalactions.addItem(item));
+        }
     }
 
     const handleDelete = (id) => {
-        dispatch(cartLocalactions.deleteItem(id));
+        if (isLogined) {
+            dispatch(deleteCart(id)).then(() => {
+                dispatch(getListCart());
+            });
+        } else {
+            dispatch(cartLocalactions.deleteItem(id));
+        }
     }
 
     return (
@@ -101,7 +140,7 @@ const Cart = () => {
                                                             <td><span className='cart__table__option'>{item.color}</span></td>
                                                             <td>
                                                                 <div className='cart__table__quantity'>
-                                                                    <button className='btn-quantity btn-minus' onClick={() => handleMinus(item.id)}><FontAwesomeIcon icon={faMinus} size='xs' /></button>
+                                                                    <button className='btn-quantity btn-minus' onClick={() => handleMinus(item)}><FontAwesomeIcon icon={faMinus} size='xs' /></button>
                                                                     <div className='quantity'><span>{item.quantity}</span></div>
                                                                     <button className='btn-quantity btn-add' onClick={() => handleAdd(item)}><FontAwesomeIcon icon={faAdd} size='xs' /></button>
                                                                 </div>

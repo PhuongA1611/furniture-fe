@@ -5,13 +5,17 @@ const cartApi = {
         const url = 'activeCart';
         return axiosClient.get(url, params);
     },
-    addcart: (params) => {
+    addCart: (params) => {
         const url = 'cart';
         return axiosClient.post(url, params);
     },
-    deletecart: (params) => {
-        const url = 'cart';
-        return axiosClient.delete(url, { data: params });
+    deleteCart: (id) => {
+        const url = 'cart/' + id;
+        return axiosClient.delete(url, {});
+    },
+    updateCart: ({ id, params }) => {
+        const url = 'cart/' + id;
+        return axiosClient.put(url, params);
     },
 }
 

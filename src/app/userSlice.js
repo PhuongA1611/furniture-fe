@@ -3,6 +3,8 @@ import userApi from "../api/userApi";
 
 export const getListUser = createAsyncThunk('user/getListUser', async (params) => await userApi.getUsers(params));
 
+export const updateUser = createAsyncThunk('user/updateUser', async ({userId, params}) => await userApi.updateUser({userId, params}));
+
 export const getListShipping = createAsyncThunk('user/getListShipping', async (userId) => await userApi.getShipping(userId));
 
 export const createShipping = createAsyncThunk('user/createShipping', async ({userId, params}) => await userApi.createShipping({userId, params}));
@@ -26,6 +28,12 @@ const userSlice = createSlice({
         });
         buider.addCase(getListUser.rejected, (state, action) => {
             state.current = null;
+        });
+        buider.addCase(updateUser.fulfilled, (state, action) => {
+            // state.current = action.payload || [];
+        });
+        buider.addCase(updateUser.rejected, (state, action) => {
+            // state.current = null;
         });
         buider.addCase(getListShipping.rejected, (state, action) => {
             state.shipping = null;

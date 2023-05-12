@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
 
 const items = localStorage.getItem("cartItems") !== null ? JSON.parse(localStorage.getItem("cartItems")) : [];
 
@@ -27,7 +28,7 @@ const cartLocalSlice = createSlice({
             // console.log(newItem);
             const existingItem = state.cartItems.find((item) => (item.id === newItem.id) && (item.size=== newItem.size) && (item.color == newItem.color));
 
-            console.log(existingItem);
+            // console.log(existingItem);
             // console.log("newitem",newItem);
 
             // state.totalQuantity++;
@@ -37,7 +38,7 @@ const cartLocalSlice = createSlice({
             if (!existingItem) {
                 // console.log("1");
                 state.cartItems.push({
-                    productid: newItem.id,
+                    productId: newItem.id,
                     productName: newItem.productName,
                     productThumbnail: newItem.productThumbnail,
                     sellingPrice: newItem.sellingPrice,
@@ -55,6 +56,8 @@ const cartLocalSlice = createSlice({
             state.totalAmount = state.cartItems.reduce((total, item) => total + item.totalPrice, 0);
 
             setItem(state.cartItems.map((item) => item), state.totalAmount, state.totalQuantity);
+      
+            message.success("The product has been added to cart!");
         },
         reduceItem(state, action) {
             const id = action.payload;

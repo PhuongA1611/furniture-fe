@@ -109,7 +109,7 @@ const Favorite = () => {
                         :
                         <div className='favorite__none'>
                             <div className='main-notice'>
-                                <p>Your cart is currently empty.</p>
+                                <p>Your favorite is currently empty.</p>
                             </div>
                             <Link to="/shop" className='main-return'>Return to shop</Link>
                         </div>

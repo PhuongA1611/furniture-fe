@@ -47,7 +47,6 @@ const Category = () => {
 
 
     useEffect(() => {
-        // console.log(searchKey);
         let params = {};
         if (searchKey) {
             params = {
@@ -66,11 +65,6 @@ const Category = () => {
                 if (listCate) {
                     const categoryId = listCate.find((item) => item.categorySlug === category
                     ).id;
-                    params = {
-                        limit: limit,
-                        page: page,
-                        categoryId: categoryId,
-                    }
 
                     if (orderby) {
                         const sortBy = filter.find((sort) => sort.query === orderby).param;
@@ -80,15 +74,25 @@ const Category = () => {
                             categoryId: categoryId,
                             sortBy: sortBy,
                         }
+                        dispatch(getListProducts(params)).unwrap().then(data => {
+                            setListProduct(data.products);
+                            setTotalProduct(data.total);
+                        });
+                    } else {
+                        params = {
+                            limit: limit,
+                            page: page,
+                            categoryId: categoryId,
+                        }
+                        dispatch(getListProducts(params)).unwrap().then(data => {
+                            setListProduct(data.products);
+                            setTotalProduct(data.total);
+                        });
                     }
                 } else {
                     setIsloading(prev => prev + 1);
                 }
             } else {
-                params = {
-                    limit: limit,
-                    page: page,
-                }
                 if (orderby) {
                     const sortBy = filter.find((sort) => sort.query === orderby).param;
                     params = {
@@ -96,12 +100,21 @@ const Category = () => {
                         page: page,
                         sortBy: sortBy,
                     }
+                    dispatch(getListProducts(params)).unwrap().then(data => {
+                        setListProduct(data.products);
+                        setTotalProduct(data.total);
+                    });
+                } else {
+                    params = {
+                        limit: limit,
+                        page: page,
+                    }
+                    dispatch(getListProducts(params)).unwrap().then(data => {
+                        setListProduct(data.products);
+                        setTotalProduct(data.total);
+                    });
                 }
             }
-            dispatch(getListProducts(params)).unwrap().then(data => {
-                setListProduct(data.products);
-                setTotalProduct(data.total);
-            });
         }
     }, [category, isloading, searchKey, orderby, page, limit])
 

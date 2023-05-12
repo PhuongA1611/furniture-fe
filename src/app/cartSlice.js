@@ -3,9 +3,11 @@ import cartApi from "../api/cartApi";
 
 export const getListCart = createAsyncThunk('cart/getListCart', async (params) => await cartApi.getListCart(params));
 
-export const addActiveCart = createAsyncThunk('cart/addActiveCart', async (params) => await cartApi.addcart(params));
+export const addActiveCart = createAsyncThunk('cart/addActiveCart', async (params) => await cartApi.addCart(params));
 
-// export const deleteUser = createAsyncThunk('user/deleteuser', async (id) => userApi.deleteuser(id));
+export const deleteCart = createAsyncThunk('cart/deleteCart', async (id) => await cartApi.deleteCart(id));
+
+export const updateCart = createAsyncThunk('cart/updateCart', async ({id, params}) => await cartApi.updateCart({id, params}));
 
 const userSlice = createSlice({
     name: 'cart',
@@ -47,12 +49,18 @@ const userSlice = createSlice({
         buider.addCase(addActiveCart.fulfilled, (state, action) => {
             // state.current = {};
         });
-        // buider.addCase(deleteuser.rejected, (state, action) => {
-        //     // state.current = {};
-        // });
-        // buider.addCase(deleteuser.fulfilled, (state, action) => {
-        //     // state.current = {};
-        // });
+        buider.addCase(deleteCart.rejected, (state, action) => {
+            // state.current = {};
+        });
+        buider.addCase(deleteCart.fulfilled, (state, action) => {
+            // state.current = {};
+        });
+        buider.addCase(updateCart.rejected, (state, action) => {
+            // state.current = {};
+        });
+        buider.addCase(updateCart.fulfilled, (state, action) => {
+            // state.current = {};
+        });
     }
 })
 

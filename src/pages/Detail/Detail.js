@@ -14,11 +14,12 @@ import "swiper/css/navigation";
 import { cartLocalactions } from '../../app/cartLocalSlice'
 import { message } from 'antd'
 import { addFavorite } from '../../app/favoriteSlice'
+import { addActiveCart, getListCart } from '../../app/cartSlice'
 
 
 const detailSchema = yup.object().shape({
-  size: yup.string().required(`you haven't chosen the size!`).nullable(),
-  color: yup.string().required(`you haven't chosen the color!`).nullable(),
+  size: yup.string().required(`you haven't chosen the size!`),
+  color: yup.string().required(`you haven't chosen the color!`),
 })
 
 const Detail = () => {
@@ -72,18 +73,13 @@ const Detail = () => {
 
   const handleAddToCart = () => {
     handleSubmit((data) => {
-      const item = addToCart(data);
-      // console.log(item);
-      dispatch(cartLocalactions.addItem(item));
-      message.success("The product has been added to cart!");
+      addToCart(data);
     })()
   }
 
   const handleBuy = () => {
     handleSubmit((data) => {
-      const item = addToCart(data);
-      // console.log(item);
-      dispatch(cartLocalactions.addItem(item));
+      addToCart(data);
       navigate('/cart');
     })()
   }
@@ -100,19 +96,35 @@ const Detail = () => {
     }
   }
 
-  const addToCart = (laterData) => {
-    const itemAdd = {
-      id: detail.id,
-      productName: detail.productName,
-      productThumbnail: detail.productThumbnail,
-      sellingPrice: detail.sellingPrice,
-      discountPrice: detail.discountPrice,
-      size: laterData.size,
-      color: laterData.color,
-      quantity: laterData.quantity,
+  const addToCart = (newData) => {
+    if (isLogined) {
+      const item = {
+        productId: detail.id,
+        quantity: newData.quantity,
+        productSize: newData.size,
+        productColor: newData.color,
+      }
+      try {
+        dispatch(addActiveCart(item)).then(() => {
+          dispatch(getListCart());
+          message.success("The product has been added to cart!")
+        })
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      const itemAdd = {
+        id: detail.id,
+        productName: detail.productName,
+        productThumbnail: detail.productThumbnail,
+        sellingPrice: detail.sellingPrice,
+        discountPrice: detail.discountPrice,
+        size: newData.size,
+        color: newData.color,
+        quantity: newData.quantity,
+      }
+      dispatch(cartLocalactions.addItem(itemAdd));
     }
-
-    return itemAdd;
   }
 
   return (
