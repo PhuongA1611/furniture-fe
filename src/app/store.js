@@ -6,9 +6,10 @@ import productReducer from "./productSlice";
 import searchReducer from "./searchSlice";
 import userReducer from "./userSlice";
 import cartLocalReducer from "./cartLocalSlice";
-import FavoriteReducer from "./favoriteSlice";
 import cartReducer from "./cartSlice";
 import orderReducer from "./orderSlice";
+import ReportReducer from "./reportSlice";
+import favoriteReducer from "./favoriteSlice";
 
 const rootReducer = {
     auth: authReducer,
@@ -17,10 +18,11 @@ const rootReducer = {
     user: userReducer,
     banner: bannerReducer,
     search: searchReducer,
-    favorite: FavoriteReducer,
+    favorite: favoriteReducer,
     cartLocal: cartLocalReducer,
     cart: cartReducer,
     order: orderReducer,
+    report: ReportReducer,
 }
 const store = configureStore({
     reducer: rootReducer,

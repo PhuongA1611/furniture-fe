@@ -40,15 +40,14 @@ const Cart = () => {
                 const params = {
                     productId: item.productId,
                     quantity: item.quantity - 1,
-                    productSize: item.size,
-                    productColor: item.color,
+                    subTotal: (item.quantity - 1) * (item.discountPrice == 0 ? item.sellingPrice : item.discountPrice)
                 }
                 dispatch(updateCart({ id, params })).then(() => {
                     dispatch(getListCart());
                 });
             }
         } else {
-            dispatch(cartLocalactions.reduceItem(item.id));
+            dispatch(cartLocalactions.reduceItem(item));
         }
     }
 
@@ -58,24 +57,28 @@ const Cart = () => {
             const params = {
                 productId: item.productId,
                 quantity: item.quantity + 1,
-                productSize: item.size,
-                productColor: item.color,
+                subTotal: (item.quantity + 1) * (item.discountPrice == 0 ? item.sellingPrice : item.discountPrice)
             }
             dispatch(updateCart({ id, params })).then(() => {
                 dispatch(getListCart());
             });
         } else {
-            dispatch(cartLocalactions.addItem(item));
+            const itemAdd = {
+                ...item,
+                quantity: 1,
+            }
+            console.log(itemAdd);
+            dispatch(cartLocalactions.addItem(itemAdd));
         }
     }
 
-    const handleDelete = (id) => {
+    const handleDelete = (item) => {
         if (isLogined) {
-            dispatch(deleteCart(id)).then(() => {
+            dispatch(deleteCart(item.id)).then(() => {
                 dispatch(getListCart());
             });
         } else {
-            dispatch(cartLocalactions.deleteItem(id));
+            dispatch(cartLocalactions.deleteItem(item));
         }
     }
 
@@ -114,15 +117,15 @@ const Cart = () => {
                                                     cartData.cartItems && cartData.cartItems.map((item, index) => (
                                                         <tr>
                                                             <td>
-                                                                <button className='cart__table__close btn-main-close' onClick={() => handleDelete(item.id)}><FontAwesomeIcon icon={faClose} size='xs' /></button>
+                                                                <button className='cart__table__close btn-main-close' onClick={() => handleDelete(item)}><FontAwesomeIcon icon={faClose} size='xs' /></button>
                                                             </td>
                                                             <td>
-                                                                <Link to={`/shop/` + item.id}>
+                                                                <Link to={`/shop/` + item.productId}>
                                                                     <div className='cart__table__img'><img src={item.productThumbnail} /></div>
                                                                 </Link>
                                                             </td>
                                                             <td>
-                                                                <Link to={`/shop/` + item.id} className='cart__table__title'>{item.productName}</Link>
+                                                                <Link to={`/shop/` + item.productId} className='cart__table__title'>{item.productName}</Link>
                                                             </td>
                                                             <td>
                                                                 <div className='cart__table__price'>{
@@ -145,7 +148,7 @@ const Cart = () => {
                                                                     <button className='btn-quantity btn-add' onClick={() => handleAdd(item)}><FontAwesomeIcon icon={faAdd} size='xs' /></button>
                                                                 </div>
                                                             </td>
-                                                            <td><h4 className='cart__table__subtotal'>${item.totalPrice}</h4></td>
+                                                            <td><h4 className='cart__table__subtotal'>${item.subTotal}</h4></td>
                                                         </tr>
                                                     ))
                                                 }

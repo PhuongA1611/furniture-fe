@@ -33,12 +33,13 @@ const userSlice = createSlice({
                     size: item.productSize,
                     color: item.productColor,
                     quantity: item.quantity,
-                    totalPrice: item.subTotal,
+                    subTotal: item.quantity * (item.products.discountPrice == 0 ? item.products.sellingPrice : item.products.discountPrice)
+                    // subTotal: item.subTotal,
                 })
             })
             state.cartItems = cart;
             state.totalQuantity = action.payload.data.reduce((total, item) => total + item.quantity, 0) || 0;
-            state.totalAmount = action.payload.data.reduce((total, item) => total + item.subTotal, 0) || 0;
+            state.totalAmount = cart.reduce((total, item) => total + item.subTotal, 0) || 0;
         });
         buider.addCase(getListCart.rejected, (state, action) => {
             // state.current = null;

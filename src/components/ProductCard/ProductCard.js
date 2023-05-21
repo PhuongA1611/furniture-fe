@@ -32,7 +32,7 @@ const Card = props => {
             })
         } else {
             const itemAdd = {
-                id: item.id,
+                productId: item.id,
                 productName: item.productName,
                 productThumbnail: item.productThumbnail,
                 sellingPrice: item.sellingPrice,
@@ -41,7 +41,6 @@ const Card = props => {
                 color: item.productColor.split(",")[0],
                 quantity: 1,
             }
-            // console.log(itemAdd);
             dispatch(cartLocalactions.addItem(itemAdd));
             message.success("The product has been added to cart!")
         }

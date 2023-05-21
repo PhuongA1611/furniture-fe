@@ -41,7 +41,7 @@ const Login = () => {
                             productColor: item.color,
                         }
                         dispatch(addActiveCart(itemAdd)).then(() => {
-                            dispatch(cartLocalactions.deleteItem(item.id));
+                            dispatch(cartLocalactions.deleteItem(item));
                             dispatch(getListCart());
                         });
                     })

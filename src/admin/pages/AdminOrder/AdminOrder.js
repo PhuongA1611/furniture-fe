@@ -81,6 +81,14 @@ const AdminOrder = () => {
           key="index"
           render={(value, item, index) => (pageCurrent - 1) * pageSize + index + 1}
         />
+        <Column
+          title="Code"
+          key="id"
+          dataIndex="id"
+          render={(_, record) => (
+            "#" + record.id
+          )}
+        />
         <Column title="Status"
           // dataIndex="status"
           key="status"
@@ -123,12 +131,12 @@ const AdminOrder = () => {
           <Button className='btn-status btn-processing' onClick={() => changeStatus("processing")}>
             processing
           </Button>
-          {/* <Button className='btn-status btn-completed' onClick={() => changeStatus("pending")}>
+          <Button className='btn-status btn-completed' onClick={() => changeStatus("completed")}>
             completed
           </Button>
-          <Button className='btn-status btn-cancelled' onClick={() => changeStatus("pending")}>
+          <Button className='btn-status btn-cancelled' onClick={() => changeStatus("cancelled")}>
             cancelled
-          </Button> */}
+          </Button>
         </Space>
       </Modal>
     </div>

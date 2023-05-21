@@ -14,7 +14,7 @@ const AdminLogin = () => {
     try {
       dispatch(loginUser(values)).then(() => {
         dispatch(getMe());
-        navigate("/admin");
+        navigate("/admin/dashboard");
       })
     } catch (error) {
       console.log(error);

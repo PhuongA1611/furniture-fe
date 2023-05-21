@@ -6,7 +6,7 @@ export const addFavorite = createAsyncThunk('favorite/addFavorite', async (param
 
 export const deleteFavorite = createAsyncThunk('favorite/deleteFavorite', async (params) => await favoriteApi.deleteFavorite(params));
 
-const userSlice = createSlice({
+const favoriteSlice = createSlice({
     name: 'favorite',
     initialState: {
         current: null,
@@ -32,5 +32,5 @@ const userSlice = createSlice({
     }
 })
 
-const { reducer: FavoriteReducer } = userSlice;
-export default FavoriteReducer;
+const { reducer: favoriteReducer } = favoriteSlice;
+export default favoriteReducer;

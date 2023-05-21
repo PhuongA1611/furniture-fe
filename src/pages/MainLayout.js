@@ -15,8 +15,7 @@ const MainLayout = () => {
     try {
       dispatch(getListCategory());
       if (isLogined) {
-        dispatch(getMe());
-        dispatch(getListCart());
+        dispatch(getMe()).then(() => dispatch(getListCart()));
       }
     } catch (error) {
       console.log(error);

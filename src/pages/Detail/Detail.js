@@ -14,7 +14,7 @@ import "swiper/css/navigation";
 import { cartLocalactions } from '../../app/cartLocalSlice'
 import { message } from 'antd'
 import { addFavorite } from '../../app/favoriteSlice'
-import { addActiveCart, getListCart } from '../../app/cartSlice'
+import { addActiveCart, getListCart, updateCart } from '../../app/cartSlice'
 
 
 const detailSchema = yup.object().shape({
@@ -29,6 +29,7 @@ const Detail = () => {
   const [relatedProducts, setRelatedProducts] = useState(null);
   const navigate = useNavigate();
   const isLogined = useSelector((state) => state.auth.isLogged);
+  const listCart = useSelector(state => state.cart.cartItems);
 
   useEffect(() => {
     try {
@@ -98,23 +99,38 @@ const Detail = () => {
 
   const addToCart = (newData) => {
     if (isLogined) {
-      const item = {
-        productId: detail.id,
-        quantity: newData.quantity,
-        productSize: newData.size,
-        productColor: newData.color,
-      }
-      try {
-        dispatch(addActiveCart(item)).then(() => {
+      const checkCart = listCart.find(item => item.productId === detail.id && item.size === newData.size && item.color === newData.color)
+
+      if (checkCart) {
+        const id = checkCart.id
+        const params = {
+          productId: checkCart.productId,
+          quantity: checkCart.quantity + newData.quantity,
+          subTotal: (checkCart.quantity + checkCart.quantity) * (checkCart.discountPrice == 0 ? checkCart.sellingPrice : checkCart.discountPrice)
+        }
+        dispatch(updateCart({ id, params })).then(() => {
           dispatch(getListCart());
           message.success("The product has been added to cart!")
-        })
-      } catch (error) {
-        console.log(error);
+        });
+      } else {
+        const item = {
+          productId: detail.id,
+          quantity: newData.quantity,
+          productSize: newData.size,
+          productColor: newData.color,
+        }
+        try {
+          dispatch(addActiveCart(item)).then(() => {
+            dispatch(getListCart());
+            message.success("The product has been added to cart!")
+          })
+        } catch (error) {
+          console.log(error);
+        }
       }
     } else {
       const itemAdd = {
-        id: detail.id,
+        productId: detail.id,
         productName: detail.productName,
         productThumbnail: detail.productThumbnail,
         sellingPrice: detail.sellingPrice,
@@ -124,6 +140,7 @@ const Detail = () => {
         quantity: newData.quantity,
       }
       dispatch(cartLocalactions.addItem(itemAdd));
+      message.success("The product has been added to cart!")
     }
   }
 

@@ -85,7 +85,7 @@ const Checkout = () => {
                           cartData.cartItems.map((item, index) => (
                             <tr key={index}>
                               <td><Link to={`/shop/` +item.productId}>{item.productName}</Link> <strong className='checkout__order__quantity'>x {item.quantity}</strong></td>
-                              <td><span>${item.totalPrice}</span></td>
+                              <td><span>${item.subTotal}</span></td>
                             </tr>
                           ))
                         }
