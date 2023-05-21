@@ -21,7 +21,7 @@ const CartItem = (props) => {
                 dispatch(getListCart());
             });
         } else {
-            dispatch(cartLocalactions.deleteItem(item.id));
+            dispatch(cartLocalactions.deleteItem(item));
         }
     }
 

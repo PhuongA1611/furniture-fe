@@ -98,6 +98,7 @@ const Detail = () => {
   }
 
   const addToCart = (newData) => {
+    const newQuantity = parseInt(newData.quantity);
     if (isLogined) {
       const checkCart = listCart.find(item => item.productId === detail.id && item.size === newData.size && item.color === newData.color)
 
@@ -105,8 +106,8 @@ const Detail = () => {
         const id = checkCart.id
         const params = {
           productId: checkCart.productId,
-          quantity: checkCart.quantity + newData.quantity,
-          subTotal: (checkCart.quantity + checkCart.quantity) * (checkCart.discountPrice == 0 ? checkCart.sellingPrice : checkCart.discountPrice)
+          quantity: checkCart.quantity + newQuantity,
+          subTotal: (checkCart.quantity + newQuantity) * (checkCart.discountPrice == 0 ? checkCart.sellingPrice : checkCart.discountPrice)
         }
         dispatch(updateCart({ id, params })).then(() => {
           dispatch(getListCart());
@@ -115,7 +116,7 @@ const Detail = () => {
       } else {
         const item = {
           productId: detail.id,
-          quantity: newData.quantity,
+          quantity: newQuantity,
           productSize: newData.size,
           productColor: newData.color,
         }
@@ -137,7 +138,7 @@ const Detail = () => {
         discountPrice: detail.discountPrice,
         size: newData.size,
         color: newData.color,
-        quantity: newData.quantity,
+        quantity: newQuantity,
       }
       dispatch(cartLocalactions.addItem(itemAdd));
       message.success("The product has been added to cart!")
