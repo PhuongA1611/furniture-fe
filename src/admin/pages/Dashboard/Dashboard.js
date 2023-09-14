@@ -1,4 +1,4 @@
-import { Button, Card, Col, Row, Table } from 'antd'
+import { Button, Card, Col, Modal, Row, Space, Table } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -19,6 +19,8 @@ const Dashboard = () => {
   const [data, setData] = useState(null);
   const list = useSelector(state => state.order.allOrder);
   const [change, setChange] = useState(0);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modaldata, setmodaldata] = useState([]);
 
   useEffect(() => {
     try {
@@ -35,33 +37,34 @@ const Dashboard = () => {
     }
   }, [change]);
 
-  const handleStatus = (id, status) => {
-    if (status !== "pending") {
-      const params = {
-        status: "pending",
-        orderId: id
-      }
-      try {
-        dispatch(updateStatus(params)).then(() => {
-          setChange(change + 1)
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      const params = {
-        status: "processing",
-        orderId: id
-      }
-      try {
-        dispatch(updateStatus(params)).then(() => {
-          setChange(change + 1)
-        });
-      } catch (error) {
-        console.log(error);
-      }
+  const showModal = (id) => {
+    // console.log(id);
+    setmodaldata(id);
+    setIsModalVisible(true);
+  };
+
+  const changeStatus = (status) => {
+    const params = {
+      status: status,
+      orderId: modaldata
+    }
+    try {
+      dispatch(updateStatus(params)).then(() => {
+        setChange(change + 1)
+        setIsModalVisible(false);
+      });
+    } catch (error) {
+      console.log(error);
     }
   }
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <div className='dashboard my-4 mx-5'>
@@ -217,7 +220,7 @@ const Dashboard = () => {
               title=""
               key="action"
               render={(_, record) => (
-                <Button type="primary" onClick={() => handleStatus(record.id, record.status)}>
+                <Button type="primary" onClick={() => showModal(record.id)}>
                   Change
                 </Button>
               )}
@@ -232,6 +235,27 @@ const Dashboard = () => {
           </Table>
         }
       </Card>
+      <Modal
+        title="Change Status"
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <Space className='my-5'>
+          <Button className='btn-status btn-pending' onClick={() => changeStatus("pending")}>
+            pending
+          </Button>
+          <Button className='btn-status btn-processing' onClick={() => changeStatus("processing")}>
+            processing
+          </Button>
+          <Button className='btn-status btn-completed' onClick={() => changeStatus("completed")}>
+            completed
+          </Button>
+          <Button className='btn-status btn-cancelled' onClick={() => changeStatus("cancelled")}>
+            cancelled
+          </Button>
+        </Space>
+      </Modal>
     </div>
   )
 }

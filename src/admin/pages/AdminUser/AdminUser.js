@@ -48,12 +48,16 @@ const AdminUser = () => {
         dataSource={list}
         pagination={false}
       >
-        {/* <Column title="STT" dataIndex="id" key="category_id" /> */}
+        <Column
+          title="Index"
+          key="index"
+          render={(value, item, index) => index + 1}
+        />
         <Column title="Avatar" dataIndex="image" key="avatar" render={(image) => <img src={image} />} />
-        <Column title="Full name" dataIndex="full_name" key="full_name" />
         <Column title="Email" dataIndex="email" key="email" />
+        <Column title="Full name" dataIndex="full_name" key="full_name" />
         <Column title="Phone" dataIndex="phone" key="phone" />
-        <Column title="Address" dataIndex="address" key="address" />
+        {/* <Column title="Address" dataIndex="address" key="address" /> */}
         <Column
           title="Action"
           key="action"

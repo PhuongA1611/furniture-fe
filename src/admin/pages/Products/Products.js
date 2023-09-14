@@ -1,19 +1,19 @@
-import { Form, Input, message, Popconfirm, Space, Table } from 'antd'
-import Column from 'antd/es/table/Column'
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
-import { deleteProduct, getListProducts } from '../../../app/productSlice';
-import './Products.scss'
-import { Button } from 'react-bootstrap';
-import { searchProduct } from '../../../app/searchSlice';
+import { Form, Input, message, Popconfirm, Space, Table } from "antd";
+import Column from "antd/es/table/Column";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { deleteProduct, getListProducts } from "../../../app/productSlice";
+import "./Products.scss";
+import { Button } from "react-bootstrap";
+import { searchProduct } from "../../../app/searchSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const searchKey = searchParams.get('search');
+  const searchKey = searchParams.get("search");
   const [list, setList] = useState([]);
   const [totalProduct, setTotalProduct] = useState(0);
   const [pageCurrent, setPageCurrent] = useState(1);
@@ -21,38 +21,43 @@ const Products = () => {
     if (searchKey) {
       const params = {
         keyword: searchKey,
-        typeCategory: 'all',
+        typeCategory: "all",
         limit: 15,
         page: pageCurrent,
-      }
-      dispatch(searchProduct(params)).unwrap().then((data) => {
-        setList(data.data.products);
-        setTotalProduct(data.data.total);
-      });
+      };
+      dispatch(searchProduct(params))
+        .unwrap()
+        .then((data) => {
+          setList(data.data.products);
+          setTotalProduct(data.data.total);
+        });
     } else {
       try {
         const params = {
           limit: 15,
           page: pageCurrent,
-        }
-        dispatch(getListProducts(params)).unwrap().then(data => {
-          setList(data.products);
-          setTotalProduct(data.total);
-        });
+          sortBy: "createdAt=desc",
+        };
+        dispatch(getListProducts(params))
+          .unwrap()
+          .then((data) => {
+            setList(data.products);
+            setTotalProduct(data.total);
+          });
       } catch (error) {
         console.log(error);
       }
     }
-  }, [pageCurrent, searchKey])
+  }, [pageCurrent, searchKey]);
 
-  const onChange = current => {
+  const onChange = (current) => {
     setPageCurrent(current);
-  }
+  };
 
   const handleEdit = (id) => {
     const link = "edit/" + id;
-    navigate(link)
-  }
+    navigate(link);
+  };
 
   const confirm = (id) => {
     // console.log(id);
@@ -61,17 +66,18 @@ const Products = () => {
         const params = {
           limit: 15,
           page: 1,
-        }
-        dispatch(getListProducts(params)).unwrap().then(data => setList(data.products));
+        };
+        dispatch(getListProducts(params))
+          .unwrap()
+          .then((data) => setList(data.products));
       });
     } catch (error) {
       console.log(error);
     }
-    message.success('Delete success!');
+    message.success("Delete success!");
   };
 
-  const cancel = (e) => {
-  };
+  const cancel = (e) => {};
 
   const onFinish = (values) => {
     console.log(values);
@@ -80,31 +86,29 @@ const Products = () => {
     } else {
       setSearchParams();
     }
-  }
+  };
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log("Failed:", errorInfo);
   };
 
   return (
-    <div className='my-4 mx-5 admin-products'>
-      <div className='admin-products__wrapper'>
-        <h2 className='admin-heading'>List Product</h2>
+    <div className="my-4 mx-5 admin-products">
+      <div className="admin-products__wrapper">
+        <h2 className="admin-heading">List Product</h2>
         <Form
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          className='admin-products__search'
+          className="admin-products__search"
         >
           <Form.Item
             label=""
             name="search"
-            className='admin-products__search__input'
+            className="admin-products__search__input"
           >
-            <Input placeholder='Search...' />
+            <Input placeholder="Search..." />
           </Form.Item>
-          <Form.Item
-            className='admin-products__search__btn'
-          >
+          <Form.Item className="admin-products__search__btn">
             <Button type="primary" htmlType="submit">
               Search
             </Button>
@@ -116,17 +120,50 @@ const Products = () => {
         pagination={{
           total: totalProduct,
           pageSize: 15,
-          onChange: onChange
+          onChange: onChange,
         }}
       >
-        {/* <Column title="STT" dataIndex="id" key="category_id" /> */}
-        <Column title="Product Thumbnail" dataIndex="productThumbnail" key="product_thumbnail" render={(productThumbnail) => <img src={productThumbnail} />} />
-        <Column title="Product Name" dataIndex="productName" key="product_name" />
-        <Column title="Product Code" dataIndex="productCode" key="product_code" />
-        <Column title="Selling Price" dataIndex="sellingPrice" key="selling_price" />
-        <Column title="Discount Price" dataIndex="discountPrice" key="discount_price" />
-        <Column title="Product Size" dataIndex="productSize" key="product_size" />
-        <Column title="Product Color" dataIndex="productColor" key="product_color" />
+        <Column
+          title="ID"
+          key="index"
+          render={(value, item, index) => (pageCurrent - 1) * 15 + index + 1}
+        />
+        <Column
+          title="Product Thumbnail"
+          dataIndex="productThumbnail"
+          key="product_thumbnail"
+          render={(productThumbnail) => <img src={productThumbnail} />}
+        />
+        <Column
+          title="Product Name"
+          dataIndex="productName"
+          key="product_name"
+        />
+        <Column
+          title="Product Code"
+          dataIndex="productCode"
+          key="product_code"
+        />
+        <Column
+          title="Selling Price"
+          dataIndex="sellingPrice"
+          key="selling_price"
+        />
+        <Column
+          title="Discount Price"
+          dataIndex="discountPrice"
+          key="discount_price"
+        />
+        <Column
+          title="Product Size"
+          dataIndex="productSize"
+          key="product_size"
+        />
+        <Column
+          title="Product Color"
+          dataIndex="productColor"
+          key="product_color"
+        />
         <Column
           title="Action"
           key="action"
@@ -148,7 +185,7 @@ const Products = () => {
         />
       </Table>
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;

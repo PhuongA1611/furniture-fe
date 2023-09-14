@@ -13,12 +13,13 @@ const threeCamera = new THREE.PerspectiveCamera(
     800
 );
 threeCamera.position.set(0, 1, 5);
-// threeCamera.zoom = 1;
+// threeCamera.zoom = 1;s-
+
 
 const Detail3D = (props) => {
     const { product3D } = props;
     // console.log(product3D);
-    const gltf = useLoader(GLTFLoader, product3D)
+    const glb = useLoader(GLTFLoader, product3D)
     return (
         <div className='Detail3D'>
             <Canvas
@@ -44,7 +45,7 @@ const Detail3D = (props) => {
                         // environment="city"
                     >
                         <mesh position={[0, -50, 0]}>
-                            <primitive object={gltf.scene} />
+                            <primitive object={glb.scene} />
                         </mesh>
                     </Stage>
 
