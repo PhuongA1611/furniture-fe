@@ -10,7 +10,7 @@ import "./Footer.scss"
 import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { footerList } from './contants'
 import 'swiper/css';
-import { searchProduct } from '../../app/searchSlice'
+import { searchProduct } from '../../app/SearchSlice'
 import { useDispatch } from 'react-redux'
 
 let searchSchema = yup.object().shape({

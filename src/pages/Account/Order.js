@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import './Account.scss'
 import { useDispatch, useSelector } from 'react-redux';
-import { getListOrder } from '../../app/orderSlice';
+import { getListOrder } from '../../app/OrderSlice';
 
 const Order = () => {
   const dispatch = useDispatch();

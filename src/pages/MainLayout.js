@@ -4,7 +4,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom'
 import { getListCategory } from '../app/CategorySlice'
 import { Breadcrumb, Footer, Header } from '../components'
 import { getMe } from '../app/AuthSlice'
-import { getListCart } from '../app/cartSlice'
+import { getListCart } from '../app/CartSlice'
 
 const MainLayout = () => {
   const dispatch = useDispatch();

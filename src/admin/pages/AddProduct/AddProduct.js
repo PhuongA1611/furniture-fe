@@ -6,7 +6,7 @@ import AntdInputTag from "antd-input-tag";
 import './AddProduct.scss'
 import { getListCategory } from '../../../app/CategorySlice';
 import { useDispatch } from 'react-redux';
-import { createProduct, getDetail, updateProduct } from '../../../app/productSlice';
+import { createProduct, getDetail, updateProduct } from '../../../app/ProductSlice';
 import { useParams } from 'react-router-dom';
 
 const { TextArea } = Input;

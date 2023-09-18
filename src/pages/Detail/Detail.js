@@ -7,14 +7,14 @@ import * as yup from 'yup'
 import { Detail3D, ProductCard, ProductSlider } from '../../components'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDetail, getListProducts } from '../../app/productSlice'
+import { getDetail, getListProducts } from '../../app/ProductSlice'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
 import "swiper/css/navigation";
-import { cartLocalactions } from '../../app/cartLocalSlice'
+import { cartLocalactions } from '../../app/CartLocalSlice'
 import { message } from 'antd'
-import { addFavorite } from '../../app/favoriteSlice'
-import { addActiveCart, getListCart, updateCart } from '../../app/cartSlice'
+import { addFavorite } from '../../app/FavoriteSlice'
+import { addActiveCart, getListCart, updateCart } from '../../app/CartSlice'
 
 
 const detailSchema = yup.object().shape({

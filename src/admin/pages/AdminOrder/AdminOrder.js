@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ElementLayout } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
-import { getListBanner } from "../../../app/bannerSlice";
-import { getAllOrder, updateStatus } from "../../../app/orderSlice";
+import { getListBanner } from "../../../app/BannerSlice";
+import { getAllOrder, updateStatus } from "../../../app/OrderSlice";
 import { Button, Modal, Popover, Space, Table } from "antd";
 import Column from "antd/es/table/Column";
 import { Link } from "react-router-dom";

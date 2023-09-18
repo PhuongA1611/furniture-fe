@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Col, Container, DropdownButton, NavDropdown, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, NavLink, useParams, useSearchParams } from 'react-router-dom'
-import { getListProducts } from '../../app/productSlice'
+import { getListProducts } from '../../app/ProductSlice'
 import { ProductCard, ProductRow } from '../../components'
 import './Category.scss'
-import { searchProduct } from '../../app/searchSlice'
+import { searchProduct } from '../../app/SearchSlice'
 import { PaginationControl } from 'react-bootstrap-pagination-control'
 
 

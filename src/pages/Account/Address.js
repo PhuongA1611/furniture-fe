@@ -5,7 +5,7 @@ import './Account.scss';
 import { ShipCard } from '../../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getListShipping } from '../../app/userSlice';
+import { getListShipping } from '../../app/UserSlice';
 import { useState } from 'react';
 
 const Address = () => {

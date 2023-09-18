@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getListProducts } from '../../app/productSlice';
+import { getListProducts } from '../../app/ProductSlice';
 import { Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 import './Favorite.scss'
 import { Link } from 'react-router-dom';
-import { deleteFavorite } from '../../app/favoriteSlice';
-import { addActiveCart, getListCart } from '../../app/cartSlice';
+import { deleteFavorite } from '../../app/FavoriteSlice';
+import { addActiveCart, getListCart } from '../../app/CartSlice';
 import { message } from 'antd';
 
 const Favorite = () => {

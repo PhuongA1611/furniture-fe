@@ -3,10 +3,10 @@ import Column from "antd/es/table/Column";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { deleteProduct, getListProducts } from "../../../app/productSlice";
+import { deleteProduct, getListProducts } from "../../../app/ProductSlice";
 import "./Products.scss";
 import { Button } from "react-bootstrap";
-import { searchProduct } from "../../../app/searchSlice";
+import { searchProduct } from "../../../app/SearchSlice";
 
 const Products = () => {
   const dispatch = useDispatch();

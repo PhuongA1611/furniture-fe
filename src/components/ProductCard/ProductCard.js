@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartLocalactions } from '../../app/cartLocalSlice';
+import { cartLocalactions } from '../../app/CartLocalSlice';
 import { message } from 'antd';
-import { addFavorite } from '../../app/favoriteSlice';
-import { addActiveCart, getListCart } from '../../app/cartSlice';
+import { addFavorite } from '../../app/FavoriteSlice';
+import { addActiveCart, getListCart } from '../../app/CartSlice';
 // new-main.png
 
 const Card = props => {

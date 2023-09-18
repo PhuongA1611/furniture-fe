@@ -12,9 +12,9 @@ import "swiper/css/pagination";
 import "./Home.scss"
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { getListProducts } from '../../app/productSlice'
+import { getListProducts } from '../../app/ProductSlice'
 import { Advertise, Banner, ListCategory, NoteCard, ProductCard, TabProducts } from '../../components'
-import { getListBanner } from '../../app/bannerSlice'
+import { getListBanner } from '../../app/BannerSlice'
 
 const Home = () => {
 

@@ -1,15 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./AuthSlice";
-import bannerReducer from "./bannerSlice";
+import bannerReducer from "./BannerSlice";
 import categoryReducer from "./CategorySlice";
-import productReducer from "./productSlice";
-import searchReducer from "./searchSlice";
-import userReducer from "./userSlice";
-import cartLocalReducer from "./cartLocalSlice";
-import cartReducer from "./cartSlice";
-import orderReducer from "./orderSlice";
-import ReportReducer from "./reportSlice";
-import favoriteReducer from "./favoriteSlice";
+import productReducer from "./ProductSlice";
+import searchReducer from "./SearchSlice";
+import userReducer from "./UserSlice";
+import cartLocalReducer from "./CartLocalSlice";
+import cartReducer from "./CartSlice";
+import orderReducer from "./OrderSlice";
+import ReportReducer from "./ReportSlice";
+import favoriteReducer from "./FavoriteSlice";
 
 const rootReducer = {
     auth: authReducer,

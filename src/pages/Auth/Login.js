@@ -11,8 +11,8 @@ import './Login.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { getMe, loginUser } from '../../app/AuthSlice'
 import { unwrapResult } from '@reduxjs/toolkit'
-import { addActiveCart, getListCart } from '../../app/cartSlice'
-import { cartLocalactions } from '../../app/cartLocalSlice'
+import { addActiveCart, getListCart } from '../../app/CartSlice'
+import { cartLocalactions } from '../../app/CartLocalSlice'
 
 let loginSchema = yup.object().shape({
     email: yup.string().email().required('This field is required'),

@@ -9,11 +9,11 @@ import './Header.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRightToBracket, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons'
-import { searchProduct } from '../../app/searchSlice'
+import { searchProduct } from '../../app/SearchSlice'
 import CartItem from './CartItem'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { message } from 'antd'
-import { getListCart } from '../../app/cartSlice'
+import { getListCart } from '../../app/CartSlice'
 
 let searchSchema = yup.object().shape({
   search: yup.string().required('This field is required')

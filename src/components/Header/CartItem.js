@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAdd, faClose, faMinus } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { cartLocalactions } from '../../app/cartLocalSlice'
-import { deleteCart, getListCart } from '../../app/cartSlice'
+import { cartLocalactions } from 'app/CartLocalSlice'
+import { deleteCart, getListCart } from 'app/CartSlice'
 
 
 const CartItem = (props) => {

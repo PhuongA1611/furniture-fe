@@ -10,8 +10,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getReport } from '../../../app/reportSlice';
-import { getAllOrder, updateStatus } from '../../../app/orderSlice';
+import { getReport } from '../../../app/ReportSlice';
+import { getAllOrder, updateStatus } from '../../../app/OrderSlice';
 import Column from 'antd/es/table/Column';
 
 const Dashboard = () => {

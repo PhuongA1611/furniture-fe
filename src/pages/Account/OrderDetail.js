@@ -4,7 +4,7 @@ import userImg from "../../assets/images/avatar-user.jpg";
 import './Account.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrderDetail } from '../../app/orderSlice';
+import { getOrderDetail } from '../../app/OrderSlice';
 
 const OrderDetail = () => {
   const { orderId } = useParams();

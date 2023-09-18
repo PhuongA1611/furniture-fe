@@ -4,10 +4,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import './Account.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProvince } from '../../app/orderSlice';
+import { getProvince } from '../../app/OrderSlice';
 import { DropdownButton } from 'react-bootstrap';
 import { useRef } from 'react';
-import { createShipping, deleteShipping, updateShipping } from '../../app/userSlice';
+import { createShipping, deleteShipping, updateShipping } from '../../app/UserSlice';
 import { message } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 

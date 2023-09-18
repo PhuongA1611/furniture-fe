@@ -4,7 +4,7 @@ import Column from 'antd/es/table/Column'
 import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { createBanner, getListBanner } from '../../../app/bannerSlice'
+import { createBanner, getListBanner } from '../../../app/BannerSlice'
 import { ElementLayout } from '../../components'
 
 const Slider = () => {

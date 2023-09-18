@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getOrderDetail, updateStatus } from '../../../app/orderSlice';
+import { getOrderDetail, updateStatus } from '../../../app/OrderSlice';
 import { Col, Row, Table } from 'react-bootstrap';
 import { Button, Modal, Space } from 'antd';
 

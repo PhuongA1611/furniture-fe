@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdd, faClose, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { cartLocalactions } from '../../app/cartLocalSlice';
+import { cartLocalactions } from '../../app/CartLocalSlice';
 import { message } from 'antd';
-import { addActiveCart, deleteCart, getListCart, updateCart } from '../../app/cartSlice';
+import { addActiveCart, deleteCart, getListCart, updateCart } from '../../app/CartSlice';
 
 const Cart = () => {
     const dispatch = useDispatch();

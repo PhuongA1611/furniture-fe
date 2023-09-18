@@ -5,10 +5,10 @@ import * as yup from 'yup'
 import { useDispatch, useSelector } from 'react-redux'
 import {  useForm } from 'react-hook-form';
 import './Checkout.scss';
-import { createOrder, getProvince } from '../../app/orderSlice';
+import { createOrder, getProvince } from '../../app/OrderSlice';
 import { ShipCard } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
-import { getListCart } from '../../app/cartSlice';
+import { getListCart } from '../../app/CartSlice';
 import { getListShipping } from '../../app/UserSlice';
 
 const checkoutSchema = yup.object().shape({
